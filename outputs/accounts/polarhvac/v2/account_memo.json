@@ -1,0 +1,176 @@
+{
+  "notes": "Karen and Dan are co-owners of Polar HVAC Services, which has been in operation for 15 years. They have a team of 11, including technicians, an install crew lead, a dispatcher/office assistant, and a part-time bookkeeper. They are currently turning down work due to inability to answer calls promptly. They use ServiceTitan for field service management.",
+  "source": "onboarding_call",
+  "version": "v2",
+  "account_id": "polarhvac",
+  "created_at": "2026-03-06T09:46:27.858447",
+  "company_name": "Polar HVAC Services LLC",
+  "business_hours": {
+    "end": "17:00:00",
+    "days": "Monday-Friday",
+    "start": "07:00:00",
+    "timezone": "Central Time"
+  },
+  "office_address": "7921 Brooklyn Boulevard, Suite 104, Brooklyn Park, Minnesota, 55445",
+  "services_supported": [
+    "HVAC",
+    "Furnace",
+    "Air Conditioning",
+    "Ductless Mini-Splits"
+  ],
+  "call_transfer_rules": {
+    "retries": null,
+    "message_on_fail": null,
+    "timeout_seconds": null
+  },
+  "emergency_definition": [
+    "Furnace failures",
+    "Heat outages in extreme cold",
+    "Gas smells near furnaces",
+    "Complete loss of heating when outdoor temperatures are below 32 degrees Fahrenheit",
+    "Situations where the customer reports a gas smell near the furnace, boiler, or water heater",
+    "Carbon monoxide detector going off and they suspect the HVAC system",
+    "A furnace or boiler making unusual loud noises like banging, popping, or screeching, combined with a failure to operate",
+    "Water leaking from the boiler or HVAC system that's causing active property damage",
+    "Complete loss of AC when the customer is elderly, has small children, or has a medical condition"
+  ],
+  "questions_or_unknowns": [
+    "What are the specific brands and models of equipment that Polar HVAC Services specializes in?"
+  ],
+  "emergency_routing_rules": {
+    "primary_phone": "612-555-0288",
+    "routing_order": [
+      "On-call technician",
+      "Dan",
+      "Karen"
+    ],
+    "fallback_action": "Take the full message, text all three numbers plus the on-call phone, and promise a callback within 20 minutes",
+    "primary_contact": "On-call technician"
+  },
+  "integration_constraints": [
+    "Never accept geothermal system service or installation calls"
+  ],
+  "after_hours_flow_summary": "After hours, Clara qualifies the urgency of each call. Emergencies are routed to the on-call technician first, then Dan, then Karen, with a 20-minute callback promise. Non-emergencies are documented with a promise to follow up by 9 AM the next business day. During heating season (November-March), emergency coverage is 24/7. During cooling season (April-October), emergency coverage is Monday through Friday only. Clara provides basic troubleshooting tips for non-emergency after-hours calls when appropriate.",
+  "office_hours_flow_summary": "During business hours, Clara answers every call and routes it based on the call type. Service calls are transferred to Brittany or Dan via email. Comfort Club inquiries go to Brittany. Installation leads are sent to Aaron, Karen, Dan, and Brittany. Warranty claims and billing questions are directed to Brittany. Active installation issues are routed to Brittany, then Marcus, then Karen. Clara attempts live transfers where appropriate and takes messages with follow-up promises.",
+  "non_emergency_routing_rules": {
+    "action": "Collect message and follow up by 9 AM next business day",
+    "details": "Clara takes the message, provides basic troubleshooting tips if appropriate, and sends it to Brittany and Dan via email."
+  },
+  "holiday_closure_days": [
+    "New Year's Day",
+    "Memorial Day",
+    "Fourth of July",
+    "Labor Day",
+    "Thanksgiving Day",
+    "Christmas Eve",
+    "Christmas Day"
+  ],
+  "team_members": [
+    {
+      "name": "Karen Lindstrom",
+      "role": "Co-owner",
+      "phone": "612-445-2831",
+      "email": "karen@polarhvac.com"
+    },
+    {
+      "name": "Dan Lindstrom",
+      "role": "Co-owner and Master HVAC Technician",
+      "phone": "612-339-7104",
+      "email": "dan@polarhvac.com"
+    },
+    {
+      "name": "Brittany Chen",
+      "role": "Dispatcher and Office Assistant",
+      "phone": "612-555-0193",
+      "email": "brittany@polarhvac.com"
+    },
+    {
+      "name": "Aaron Kowalski",
+      "role": "Comfort Advisor",
+      "phone": "612-517-3389",
+      "email": "aaron@polarhvac.com"
+    },
+    {
+      "name": "Marcus Johnson",
+      "role": "Install Crew Lead",
+      "phone": "612-903-2248",
+      "email": null
+    }
+  ],
+  "vip_commercial_accounts": [
+    {
+      "name": "Northern Property Group",
+      "contact": "Jessica Tran"
+    },
+    {
+      "name": "Great Lakes Restaurant Holdings",
+      "contact": "Robert Kim"
+    },
+    {
+      "name": "Heartland Senior Living",
+      "contact": "Patricia Hoffman"
+    },
+    {
+      "name": "Metro Edge Realty",
+      "contact": "James Okafor"
+    },
+    {
+      "name": "Twin Cities Schools Cooperative",
+      "contact": "Amanda Reeves"
+    }
+  ],
+  "comfort_club_pricing": {
+    "annual": "$189",
+    "monthly": "$16.99"
+  },
+  "comfort_club_benefits": [
+    "Two tune-ups a year",
+    "Priority scheduling",
+    "15 percent off all repairs",
+    "No overtime charges for emergency calls"
+  ],
+  "service_call_pricing": {
+    "diagnostic_fee": "$99",
+    "labor_rate": "$85 per half hour",
+    "details": "The $99 diagnostic fee covers the trip charge and the initial assessment. The cost of any repairs will be determined after our technician evaluates the issue and provides you with options before doing any work."
+  },
+  "safety_advisories": {
+    "gas_smell_or_co_detector": "Clara should immediately tell the caller to leave the home, get to fresh air, and call 911."
+  },
+  "call_routing_timeout": {
+    "timeout_seconds": 20,
+    "retries": 2
+  },
+  "seasonal_operations": {
+    "heating_season": {
+      "months": "November through March",
+      "emergency_coverage": "24/7"
+    },
+    "cooling_season": {
+      "months": "April through October",
+      "emergency_coverage": "Monday through Friday only"
+    }
+  },
+  "brand_differentiators": [
+    "15 years serving the Twin Cities",
+    "Family-owned and operated",
+    "Authorized dealers for Lennox, Carrier, and Trane",
+    "All techs are NATE certified",
+    "24/7 emergency service during heating season",
+    "100 percent satisfaction guarantee",
+    "Financing through GreenSky for larger installations"
+  ],
+  "call_greeting": "Good [morning/afternoon/evening], Polar HVAC Services, this is Clara. How can I help you?",
+  "call_closing": "Thanks for calling Polar HVAC Services. We'll be in touch. Stay warm/cool.",
+  "integration_constraints_added": [
+    "Clara should never create or promise to create a work order in ServiceTitan",
+    "Clara should never give a specific time for when a technician will arrive",
+    "Clara should never tell a customer what's wrong with their system as a definitive diagnosis",
+    "Clara should never discuss competitor pricing or compare Polar HVAC to other companies",
+    "Clara should never say 'I don't know'",
+    "Clara should never say Polar HVAC is 'too busy' or 'booked up'",
+    "Clara should never promise a specific price for any repair or installation",
+    "Clara should never use technical jargon that a homeowner wouldn't understand without explaining it simply",
+    "Clara should never tell a customer to 'just turn it off and wait' for a gas smell or CO alarm"
+  ]
+}

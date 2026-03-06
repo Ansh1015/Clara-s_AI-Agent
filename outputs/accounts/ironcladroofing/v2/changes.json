@@ -1,0 +1,383 @@
+{
+  "account_id": "ironcladroofing",
+  "company_name": "Ironclad Roofing and Restoration LLC",
+  "v1_created_at": "2023-10-04T14:30:00Z",
+  "v2_created_at": "2026-03-06T09:50:27.363110",
+  "total_fields_changed": 15,
+  "total_fields_added": 18,
+  "total_fields_resolved": 3,
+  "total_remaining_unknowns": 0,
+  "changes": [
+    {
+      "field": "['team_members']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        {
+          "name": "Ryan Calloway",
+          "role": "Owner",
+          "phone": "615-882-4410",
+          "email": "ryan@ironcladroofing.com"
+        },
+        {
+          "name": "Amy Torres",
+          "role": "Operations Manager",
+          "phone": "615-903-2217",
+          "email": "amy@ironcladroofing.com"
+        },
+        {
+          "name": "Derek Mitchell",
+          "role": "Sales Manager",
+          "phone": "615-447-8813",
+          "email": "derek@ironcladroofing.com"
+        },
+        {
+          "name": "Shawna Wright",
+          "role": "Office Coordinator",
+          "phone": "615-555-0763",
+          "email": "shawna@ironcladroofing.com"
+        },
+        {
+          "name": "Kevin Briggs",
+          "role": "Production Manager",
+          "phone": "615-631-4478",
+          "email": "kevin@ironcladroofing.com"
+        }
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['storm_surge_protocol']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "activation": "manual",
+        "routing": {
+          "primary_contact": "Derek",
+          "secondary_contact": "Ryan",
+          "notification_method": "email and text",
+          "callback_target": "2 hours"
+        },
+        "greeting": "Good morning, Ironclad Roofing, this is Clara. If you're calling about recent storm damage, we offer free inspections when you're ready. How can I help you today?",
+        "questions": [
+          "Are you calling because of recent storm damage?",
+          "Description of damage",
+          "Interior leaks?",
+          "Insurance claim filed?",
+          "Availability for inspection"
+        ],
+        "free_inspection_mention": true
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['vip_clients']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        {
+          "name": "Cumberland Property Management",
+          "contact": "Sarah Duncan",
+          "type": "commercial"
+        },
+        {
+          "name": "Music City Church Group",
+          "contact": "Pastor Mike Stanton",
+          "type": "commercial"
+        },
+        {
+          "name": "Nashville Hot Chicken Holdings",
+          "contact": "Jamie Lewis",
+          "type": "commercial"
+        },
+        {
+          "name": "Benchmark Realty",
+          "type": "residential referral"
+        },
+        {
+          "name": "Parks Realty",
+          "type": "residential referral"
+        },
+        {
+          "name": "Village Real Estate",
+          "type": "residential referral"
+        }
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['service_area']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "primary": "Middle Tennessee",
+        "counties": [
+          "Davidson",
+          "Williamson",
+          "Rutherford",
+          "Wilson",
+          "Sumner",
+          "Robertson",
+          "Cheatham"
+        ],
+        "radius": "40 miles"
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['licensing_and_credentials']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "tennessee_license": "HIC-38724",
+        "certifications": [
+          "GAF Master Elite",
+          "CertainTeed SELECT ShingleMaster"
+        ],
+        "insurance": {
+          "general_liability": "$2M",
+          "workers_compensation": "$1M",
+          "commercial_auto": "$1M"
+        }
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['warranties']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "workmanship": "10 years",
+        "gaf_system_plus": "25 years",
+        "golden_pledge": "50 years non-prorated"
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['financing_options']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "provider": "Hearth",
+        "mention": "For non-insurance re-roofs"
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['phrases_to_avoid']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "I don't know",
+        "Pricing or estimates",
+        "Definitive repair/replace recommendations",
+        "Insurance filing advice",
+        "Negative comments about competitors"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['greeting']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "normal": "Good morning, Ironclad Roofing, this is Clara. How can I help you today?",
+        "storm_mode": "Good morning, Ironclad Roofing, this is Clara. If you're calling about recent storm damage, we offer free inspections when you're ready. How can I help you today?"
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['closing']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "normal": "Thank you for calling Ironclad Roofing. We'll be in touch.",
+        "with_next_steps": "One of our team members will reach out to you within [timeframe]."
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['source']",
+      "type": "updated",
+      "old_value": "demo_call",
+      "new_value": "onboarding_call",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['version']",
+      "type": "updated",
+      "old_value": "v1",
+      "new_value": "v2",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['created_at']",
+      "type": "updated",
+      "old_value": "2023-10-04T14:30:00Z",
+      "new_value": "2026-03-06T09:50:27.363110",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['after_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Clara answers all after-hours calls, captures lead information, and routes it to the sales team for follow-up the next morning.",
+      "new_value": "After hours, Clara answers calls and routes emergencies to Ryan first, then Amy. Non-emergencies are captured for follow-up the next business day. For active leaks, Clara advises customers to place buckets under drips and move valuables, promising a callback within 30 minutes.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['office_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Shawna handles calls, but also manages invoicing, insurance paperwork, material orders, and CRM entries.",
+      "new_value": "During business hours, Clara answers calls and routes them appropriately. Shawna handles operational calls, Derek manages sales leads, and Ryan handles commercial inquiries. Emergency calls are routed to Shawna first, then Ryan, then Amy with a 20-second timeout and two attempts each. If no one answers, a message is taken and texted to all three.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['business_hours']['end']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "17:00:00",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['days']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Monday-Friday",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['start']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "08:00:00",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['timezone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Central Time",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['retries']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": 2,
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['message_on_fail']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Take message and text",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['timeout_seconds']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": 20,
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['primary_phone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "615-882-4410",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['fallback_action']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Take message and text both Ryan and Amy",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['primary_contact']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Ryan",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_definition']['0']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "active roof leak during rain",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['1']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "storm damage exposing roof structure",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['2']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "structural concerns",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['3']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "tarp requests",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['routing_order']['0']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Ryan",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['routing_order']['1']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Amy",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['integration_constraints']['0']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Clara should never create entries in JobNimbus",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['integration_constraints']['1']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Clara should never promise a specific inspection date or time",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "What are the exact business hours for Ironclad Roofing?",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "What is the specific emergency definition and routing rules for after-hours emergencies?",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "What are the specific non-emergency routing rules and actions?",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    }
+  ],
+  "remaining_unknowns": []
+}

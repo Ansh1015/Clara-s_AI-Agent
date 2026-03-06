@@ -1,0 +1,1125 @@
+{
+  "name": "Clara AI Pipeline",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "ecb1eb17-b453-41bf-beea-afd1bbfe18ad",
+      "name": "Manual Trigger A",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// Set the account_id to process\n// Change this value for each account\nconst accountId = 'benselectric';\nreturn [{ json: { account_id: accountId } }];\n"
+      },
+      "id": "d5799d9f-5dc3-4c54-b045-927a34c995df",
+      "name": "Set Account ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst fs = require('fs');\nconst accountId = $json.account_id;\nconst filePath = 'data/demo/' + accountId + '_demo.txt';\nconst transcript = fs.readFileSync(filePath, 'utf-8');\nreturn [{ json: { account_id: accountId, transcript: transcript } }];\n"
+      },
+      "id": "b863dc7b-ebb8-4cbe-8ffb-3f1e61aaafb5",
+      "name": "Read Transcript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.mistral.ai/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"model\": \"mistral-medium-2505\", \"response_format\": {\"type\": \"json_object\"}, \"messages\": [{\"role\": \"system\", \"content\": \"You are a data extraction AI. Extract business information from call transcripts and return valid JSON only.\"},{\"role\": \"user\", \"content\": $json.transcript}] }",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "af0d658b-98f8-4b53-8c8b-ddf139c386e9",
+      "name": "HTTP Request: Mistral — Extract Memo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        850,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "mistral_api",
+          "name": "Mistral API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Error handler for Mistral — Extract Memo\nconst items = $input.all();\nfor (const item of items) {\n  if (item.json.error || (item.json.statusCode && item.json.statusCode >= 400)) {\n    const msg = `[${new Date().toISOString()}] Mistral — Extract Memo FAILED: ${JSON.stringify(item.json.error || item.json)}\\n`;\n    console.error(msg);\n    // Continue execution — don't block the pipeline\n  }\n}\nreturn items;"
+      },
+      "id": "4eb761b4-c231-4435-b46d-ca6ce0a35a23",
+      "name": "Error Handler: Extract Memo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        850,
+        500
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst data = $json;\n// Parse the LLM response\nlet memo;\nif (data.choices && data.choices[0]) {\n  memo = JSON.parse(data.choices[0].message.content);\n} else {\n  memo = data;\n}\nmemo.version = 'v1';\nmemo.source = 'demo_call';\nmemo.created_at = new Date().toISOString();\nreturn [{ json: memo }];\n"
+      },
+      "id": "ca49edc8-c39d-40d5-a37a-0db9fbd89250",
+      "name": "Function: Validate Memo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1050,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.mistral.ai/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"model\": \"mistral-medium-2505\", \"response_format\": {\"type\": \"json_object\"}, \"messages\": [{\"role\": \"system\", \"content\": \"You are an AI agent configuration generator. Generate a Retell AI agent spec from the account memo. Return valid JSON only.\"},{\"role\": \"user\", \"content\": JSON.stringify($json)}] }",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "ddfa5e15-f154-49f8-bb2c-33b9690a761f",
+      "name": "HTTP Request: Mistral — Generate Agent Spec",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1250,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "mistral_api",
+          "name": "Mistral API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Error handler for Mistral — Generate Agent Spec\nconst items = $input.all();\nfor (const item of items) {\n  if (item.json.error || (item.json.statusCode && item.json.statusCode >= 400)) {\n    const msg = `[${new Date().toISOString()}] Mistral — Generate Agent Spec FAILED: ${JSON.stringify(item.json.error || item.json)}\\n`;\n    console.error(msg);\n    // Continue execution — don't block the pipeline\n  }\n}\nreturn items;"
+      },
+      "id": "e34d535c-9e09-4331-bbe2-14fdfa147e89",
+      "name": "Error Handler: Generate Agent Spec",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1250,
+        500
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst data = $json;\nlet spec;\nif (data.choices && data.choices[0]) {\n  spec = JSON.parse(data.choices[0].message.content);\n} else {\n  spec = data;\n}\nspec.version = 'v1';\nreturn [{ json: { ...spec, account_id: spec.account_id || $('Function: Validate Memo').first().json.account_id } }];\n"
+      },
+      "id": "5c26e5e7-87c3-4149-94e2-506be2bd705f",
+      "name": "Function: Validate Agent Spec",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1450,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/account_memos?on_conflict=account_id,version",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation,resolution=merge-duplicates"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($(\"Function: Validate Memo\").first().json) }}"
+      },
+      "id": "ced9707a-1d68-4917-9b28-1c94b73d520c",
+      "name": "HTTP Request: Supabase — Save Memo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1650,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "supabase_api",
+          "name": "Supabase API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/agent_specs?on_conflict=account_id,version",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation,resolution=merge-duplicates"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}"
+      },
+      "id": "f0e6d411-e664-4947-ae8e-5e1af309cc97",
+      "name": "HTTP Request: Supabase — Save Agent Spec",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1850,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "supabase_api",
+          "name": "Supabase API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst fs = require('fs');\nconst path = require('path');\nconst accountId = $('Function: Validate Memo').first().json.account_id;\nconst outDir = 'outputs/accounts/' + accountId + '/v1';\n\n// Create directory\nfs.mkdirSync(outDir, { recursive: true });\n\n// Save memo\nconst memo = $('Function: Validate Memo').first().json;\nfs.writeFileSync(path.join(outDir, 'account_memo.json'), JSON.stringify(memo, null, 2));\n\n// Save spec\nconst spec = $('Function: Validate Agent Spec').first().json;\nfs.writeFileSync(path.join(outDir, 'agent_spec.json'), JSON.stringify(spec, null, 2));\n\nreturn [{ json: { account_id: accountId, status: 'files_saved', version: 'v1', pipeline: 'A', company_name: memo.company_name || '' } }];\n"
+      },
+      "id": "3f0405c3-40bb-4384-8b1d-3c2fef2bf938",
+      "name": "Write Local Files",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2050,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.AIRTABLE_BASE_URL }}/{{ $json.account_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({fields: {account_id: $json.account_id, company_name: $json.company_name, version: $json.version, status: $json.status, pipeline: $json.pipeline}}) }}",
+        "options": {}
+      },
+      "id": "bd254297-6b1c-4710-b53a-13b7f4f683a0",
+      "name": "HTTP Request: Airtable — Create Record",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2250,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "airtable_api",
+          "name": "Airtable API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/pipeline_runs",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation,resolution=merge-duplicates"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({account_id: $json.account_id, pipeline: \"A\", status: \"success\", created_at: new Date().toISOString()}) }}"
+      },
+      "id": "cb628860-0db7-4977-ab53-44dcd43763b6",
+      "name": "HTTP Request: Supabase — Log Run",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2450,
+        300
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "supabase_api",
+          "name": "Supabase API Key"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "id": "fb43b401-4f84-42c6-865e-055523c7ec1e",
+      "name": "Manual Trigger B",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst accountId = 'benselectric';\nreturn [{ json: { account_id: accountId } }];\n"
+      },
+      "id": "e4665029-708b-40f7-95df-f89216c96bff",
+      "name": "Set Account ID B",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        450,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/={{ \"account_memos?select=memo&account_id=eq.\" + $json.account_id + \"&version=eq.v1\" }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation,resolution=merge-duplicates"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "7d190396-9910-410a-b6c6-fb26baa341e6",
+      "name": "HTTP Request: Supabase — Load v1 Memo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        650,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "supabase_api",
+          "name": "Supabase API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst fs = require('fs');\nconst accountId = $json.account_id || $('Set Account ID B').first().json.account_id;\nconst filePath = 'data/onboarding/' + accountId + '_onboarding.txt';\nconst transcript = fs.readFileSync(filePath, 'utf-8');\n\n// Get v1 memo from Supabase response\nconst supabaseResp = $('HTTP Request: Supabase — Load v1 Memo').first().json;\nlet v1Memo = {};\nif (Array.isArray(supabaseResp) && supabaseResp.length > 0) {\n  v1Memo = supabaseResp[0].memo || {};\n} else if (supabaseResp.memo) {\n  v1Memo = supabaseResp.memo;\n}\n\nreturn [{ json: { account_id: accountId, transcript: transcript, v1_memo: v1Memo } }];\n"
+      },
+      "id": "713619ab-30f0-4bb1-9c07-1581e8279387",
+      "name": "Read Onboarding Transcript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        850,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.mistral.ai/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"model\": \"mistral-medium-2505\", \"response_format\": {\"type\": \"json_object\"}, \"messages\": [{\"role\": \"system\", \"content\": \"You are a data extraction AI. Compare this onboarding transcript against the existing v1 memo and extract a patch of new or changed information. Return valid JSON only.\"},{\"role\": \"user\", \"content\": JSON.stringify({v1_memo: $json.v1_memo, transcript: $json.transcript})}] }",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "0e758a74-acc4-48d8-9616-76c0fbcc3add",
+      "name": "HTTP Request: Mistral — Extract Patch",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1050,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "mistral_api",
+          "name": "Mistral API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Error handler for Mistral — Extract Patch\nconst items = $input.all();\nfor (const item of items) {\n  if (item.json.error || (item.json.statusCode && item.json.statusCode >= 400)) {\n    const msg = `[${new Date().toISOString()}] Mistral — Extract Patch FAILED: ${JSON.stringify(item.json.error || item.json)}\\n`;\n    console.error(msg);\n    // Continue execution — don't block the pipeline\n  }\n}\nreturn items;"
+      },
+      "id": "2f3d1365-8d00-4581-9309-40ec549184b5",
+      "name": "Error Handler: Extract Patch",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1050,
+        1000
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst data = $json;\nlet patch;\nif (data.choices && data.choices[0]) {\n  patch = JSON.parse(data.choices[0].message.content);\n} else {\n  patch = data;\n}\n\nconst v1Memo = $('Read Onboarding Transcript').first().json.v1_memo;\nconst accountId = $('Read Onboarding Transcript').first().json.account_id;\n\n// Deep merge patch onto v1 memo\nconst v2Memo = { ...v1Memo };\nconst updated = patch.updated_fields || {};\nconst newFields = patch.new_fields || {};\n\nfor (const [key, val] of Object.entries(updated)) {\n  v2Memo[key] = val;\n}\nfor (const [key, val] of Object.entries(newFields)) {\n  v2Memo[key] = val;\n}\n\nv2Memo.version = 'v2';\nv2Memo.account_id = accountId;\nv2Memo.source = 'onboarding_call';\nv2Memo.created_at = new Date().toISOString();\n\nreturn [{ json: { v2_memo: v2Memo, patch: patch, account_id: accountId } }];\n"
+      },
+      "id": "34a07c5b-0df8-4938-a7d7-a54493c42a91",
+      "name": "Function: Merge Patch",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1250,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst v2Memo = $json.v2_memo;\n// Basic validation — ensure required fields\nif (!v2Memo.account_id || !v2Memo.company_name) {\n  throw new Error('v2 memo missing required fields');\n}\nreturn [{ json: v2Memo }];\n"
+      },
+      "id": "3e22d44b-8bbb-4518-8efa-1458401feb1c",
+      "name": "Function: Validate v2 Memo",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1450,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.mistral.ai/v1/chat/completions",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={ \"model\": \"mistral-medium-2505\", \"response_format\": {\"type\": \"json_object\"}, \"messages\": [{\"role\": \"system\", \"content\": \"You are an AI agent configuration generator. Generate a Retell AI agent spec from this v2 account memo. Return valid JSON only.\"},{\"role\": \"user\", \"content\": JSON.stringify($json)}] }",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "b7f0652d-3b17-4330-b76f-bec43effec59",
+      "name": "HTTP Request: Mistral — Regenerate Agent Spec v2",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1650,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "mistral_api",
+          "name": "Mistral API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Error handler for Mistral — Regenerate Agent Spec v2\nconst items = $input.all();\nfor (const item of items) {\n  if (item.json.error || (item.json.statusCode && item.json.statusCode >= 400)) {\n    const msg = `[${new Date().toISOString()}] Mistral — Regenerate Agent Spec v2 FAILED: ${JSON.stringify(item.json.error || item.json)}\\n`;\n    console.error(msg);\n    // Continue execution — don't block the pipeline\n  }\n}\nreturn items;"
+      },
+      "id": "50338022-b0b0-4d66-90c3-a9045676ef77",
+      "name": "Error Handler: Regenerate Agent Spec v2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1650,
+        1000
+      ],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst patch = $('Function: Merge Patch').first().json.patch;\nconst accountId = $('Function: Merge Patch').first().json.account_id;\n\nconst changes = {\n  account_id: accountId,\n  updated_fields: patch.updated_fields || {},\n  new_fields: patch.new_fields || {},\n  resolved_unknowns: patch.resolved_unknowns || [],\n  created_at: new Date().toISOString()\n};\n\n// Generate markdown summary\nlet md = '# Changelog: ' + accountId + '\\n\\n';\nmd += '## Updated Fields\\n';\nfor (const [k, v] of Object.entries(changes.updated_fields)) {\n  md += '- **' + k + '**: ' + JSON.stringify(v) + '\\n';\n}\nmd += '\\n## New Fields\\n';\nfor (const [k, v] of Object.entries(changes.new_fields)) {\n  md += '- **' + k + '**: ' + JSON.stringify(v) + '\\n';\n}\n\nreturn [{ json: { changes: changes, changelog_md: md, account_id: accountId } }];\n"
+      },
+      "id": "d8c891c1-e89a-4ba0-8dab-0e848ce68064",
+      "name": "Function: Generate Changelog",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1850,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/account_memos?on_conflict=account_id,version",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation,resolution=merge-duplicates"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($(\"Function: Validate v2 Memo\").first().json) }}"
+      },
+      "id": "22948ee0-c001-4129-80de-504eccfd778a",
+      "name": "HTTP Request: Supabase — Save v2 Memo",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2050,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "supabase_api",
+          "name": "Supabase API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/agent_specs?on_conflict=account_id,version",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation,resolution=merge-duplicates"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "id": "d51b22e6-f0ac-49f6-ada1-7ce87b4fd2c9",
+      "name": "HTTP Request: Supabase — Save v2 Agent Spec",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2250,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "supabase_api",
+          "name": "Supabase API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/changelogs?on_conflict=account_id",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation,resolution=merge-duplicates"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($(\"Function: Generate Changelog\").first().json.changes) }}"
+      },
+      "id": "d833ba03-bedb-4aeb-bf14-268fcf8fd534",
+      "name": "HTTP Request: Supabase — Save Changelog",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2450,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "supabase_api",
+          "name": "Supabase API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst fs = require('fs');\nconst path = require('path');\nconst accountId = $('Function: Merge Patch').first().json.account_id;\nconst outDir = 'outputs/accounts/' + accountId + '/v2';\nfs.mkdirSync(outDir, { recursive: true });\n\n// Save v2 memo\nconst v2Memo = $('Function: Validate v2 Memo').first().json;\nfs.writeFileSync(path.join(outDir, 'account_memo.json'), JSON.stringify(v2Memo, null, 2));\n\n// Save v2 agent spec\nconst specData = $('HTTP Request: Mistral — Regenerate Agent Spec v2').first().json;\nlet spec = specData;\nif (specData.choices && specData.choices[0]) {\n  spec = JSON.parse(specData.choices[0].message.content);\n}\nfs.writeFileSync(path.join(outDir, 'agent_spec.json'), JSON.stringify(spec, null, 2));\n\n// Save changelog\nconst changes = $('Function: Generate Changelog').first().json;\nfs.writeFileSync(path.join(outDir, 'changes.json'), JSON.stringify(changes.changes, null, 2));\nfs.writeFileSync(path.join(outDir, 'changes.md'), changes.changelog_md);\n\nreturn [{ json: { account_id: accountId, status: 'v2_complete', version: 'v2', pipeline: 'B', company_name: v2Memo.company_name || '' } }];\n"
+      },
+      "id": "2c34e78d-5493-4ec8-930d-572cf1dd1250",
+      "name": "Write v2 Local Files",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2650,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "={{ $env.AIRTABLE_BASE_URL }}/{{ $json.account_id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({fields: {account_id: $json.account_id, company_name: $json.company_name, version: $json.version, status: $json.status, pipeline: $json.pipeline}}) }}",
+        "options": {}
+      },
+      "id": "a6f83104-27a0-4b69-907c-ca2e3e61e49e",
+      "name": "HTTP Request: Airtable — Update Record",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2850,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "airtable_api",
+          "name": "Airtable API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SUPABASE_URL }}/rest/v1/pipeline_runs",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=representation,resolution=merge-duplicates"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({account_id: $json.account_id, pipeline: \"B\", status: \"success\", created_at: new Date().toISOString()}) }}"
+      },
+      "id": "fd744a51-90be-447a-8224-f9660759d656",
+      "name": "HTTP Request: Supabase — Log Run B",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3050,
+        800
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "supabase_api",
+          "name": "Supabase API Key"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger A": {
+      "main": [
+        [
+          {
+            "node": "Set Account ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Account ID": {
+      "main": [
+        [
+          {
+            "node": "Read Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Transcript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Mistral — Extract Memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Mistral — Extract Memo": {
+      "main": [
+        [
+          {
+            "node": "Function: Validate Memo",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Handler: Extract Memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function: Validate Memo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Mistral — Generate Agent Spec",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Mistral — Generate Agent Spec": {
+      "main": [
+        [
+          {
+            "node": "Function: Validate Agent Spec",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Handler: Generate Agent Spec",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function: Validate Agent Spec": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Supabase — Save Memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Supabase — Save Memo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Supabase — Save Agent Spec",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Supabase — Save Agent Spec": {
+      "main": [
+        [
+          {
+            "node": "Write Local Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write Local Files": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Airtable — Create Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Airtable — Create Record": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Supabase — Log Run",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Trigger B": {
+      "main": [
+        [
+          {
+            "node": "Set Account ID B",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Account ID B": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Supabase — Load v1 Memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Supabase — Load v1 Memo": {
+      "main": [
+        [
+          {
+            "node": "Read Onboarding Transcript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Read Onboarding Transcript": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Mistral — Extract Patch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Mistral — Extract Patch": {
+      "main": [
+        [
+          {
+            "node": "Function: Merge Patch",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Handler: Extract Patch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function: Merge Patch": {
+      "main": [
+        [
+          {
+            "node": "Function: Validate v2 Memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function: Validate v2 Memo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Mistral — Regenerate Agent Spec v2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Mistral — Regenerate Agent Spec v2": {
+      "main": [
+        [
+          {
+            "node": "Function: Generate Changelog",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Handler: Regenerate Agent Spec v2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function: Generate Changelog": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Supabase — Save v2 Memo",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Supabase — Save v2 Memo": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Supabase — Save v2 Agent Spec",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Supabase — Save v2 Agent Spec": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Supabase — Save Changelog",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Supabase — Save Changelog": {
+      "main": [
+        [
+          {
+            "node": "Write v2 Local Files",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Write v2 Local Files": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Airtable — Update Record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request: Airtable — Update Record": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request: Supabase — Log Run B",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [],
+  "pinData": {}
+}

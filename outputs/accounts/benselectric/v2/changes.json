@@ -1,0 +1,361 @@
+{
+  "account_id": "benselectric",
+  "company_name": "Ben's Electric Solutions",
+  "v1_created_at": "2023-10-06T15:00:00Z",
+  "v2_created_at": "2026-03-06T09:44:51.342527",
+  "total_fields_changed": 14,
+  "total_fields_added": 28,
+  "total_fields_resolved": 5,
+  "total_remaining_unknowns": 0,
+  "changes": [
+    {
+      "field": "['business_hours.holidays']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Closed on statutory holidays",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.timeout_seconds']",
+      "type": "added",
+      "old_value": null,
+      "new_value": 30,
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.retries']",
+      "type": "added",
+      "old_value": null,
+      "new_value": 2,
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.primary_contact_phone']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "403-975-1773",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.secondary_contact']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Dave",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.secondary_contact_phone']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "403-821-4456",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.tertiary_contact']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Mike",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.tertiary_contact_phone']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "403-612-8890",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.callback_promise']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "15 minutes",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules.safety_advisory']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "If there is an active fire or immediate danger, please call 911 right away. Stay safe and move away from the hazard.",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['non_emergency_routing_rules.callback_promise']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "by 10 AM the next business day",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['service_call_rate']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "$89 for the first hour including trip charge, $65 per half hour after that",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['warranty']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "One-year warranty on all workmanship",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['payment_methods']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Cash, cheque, e-transfer, and all major credit cards",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['service_area']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Calgary and surrounding areas within about a 50 kilometer radius",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['credentials']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "license_number": "EC-78234",
+        "registered_with": "Alberta Safety Codes Authority",
+        "insurance": {
+          "commercial_general_liability": "$2 million",
+          "automobile_liability": "$5 million"
+        }
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['greeting_script']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Good [morning/afternoon/evening], you've reached Ben's Electric Solutions. This is Clara, how can I help you today?",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['closing_script']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Thanks for calling Ben's Electric Solutions. We'll be in touch soon. Have a great day.",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['spam_call_handling']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "If someone's clearly selling something, Clara can politely end the call. Just say 'Thank you, but we're not interested at this time. Have a nice day.'",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['language_support']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "English only for now",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['priority_clients']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "Cascade Property Management",
+        "Skyline Builders",
+        "Redwood Construction"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['services_not_supported']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "Gemstone lights",
+        "Solar panel installations",
+        "Low voltage security systems",
+        "Telecommunications or data cabling"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['email_addresses']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "ben": "ben@benselectric.ca",
+        "dave": "dave@benselectric.ca"
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['source']",
+      "type": "updated",
+      "old_value": "demo_call",
+      "new_value": "onboarding_call",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['version']",
+      "type": "updated",
+      "old_value": "v1",
+      "new_value": "v2",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['created_at']",
+      "type": "updated",
+      "old_value": "2023-10-06T15:00:00Z",
+      "new_value": "2026-03-06T09:44:51.342527",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['after_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Calls are taken by Clara and routed appropriately based on urgency and business rules.",
+      "new_value": "After hours, Clara answers and lets the caller know that Ben's Electric Solutions is currently closed. She then asks if the call is an emergency. If it is, she follows the emergency routing procedures. If it is not an emergency, Clara takes the message, gets all the details, and lets the customer know that the team will be in touch by 10 AM the next business day. The message is sent to Ben and Dave immediately.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['office_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Calls are handled by Clara, with specific calls routed directly to Ben or other team members as configured.",
+      "new_value": "During business hours, Clara answers every call and gathers customer information including name, phone number, address, and description of the issue. She lets the customer know that the team will get back to them shortly to schedule it. For customers who specifically ask to speak to Ben or Dave, Clara attempts to transfer the call to their respective phone numbers. For calls from Cascade Property Management, Skyline Builders, or Redwood Construction, Clara attempts a live transfer to Ben or Dave during business hours.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['business_hours']['end']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "5:00 PM",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['timezone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Mountain Time",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['office_address']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "4215 Richardson Road SW, Calgary, Alberta, T3E 7B7",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['retries']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": 2,
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['message_on_fail']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Take a message and let the customer know the appropriate person will call them back.",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['timeout_seconds']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": 30,
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['primary_phone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "403-975-1773",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['fallback_action']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Take the full message, get the caller's name, phone number, the address where the issue is, exactly what's happening, and text Ben and Dave immediately with all that information. Promise a 15-minute callback.",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['non_emergency_routing_rules']['details']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "For non-emergency calls during business hours, Clara emails both Ben and Dave. For non-emergency calls after hours, Clara takes the message and sends it to Ben and Dave, promising a callback by 10 AM the next business day.",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_definition']['1']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Active safety hazards such as electrical fires, sparks, water near electrical equipment, exposed wires, burning smells from electrical panels",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['2']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Commercial property losing power to critical equipment like refrigeration in restaurants or gas station pumps",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['routing_order']['1']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Dave",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['routing_order']['2']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Mike",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['integration_constraints']['1']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "No scheduling until Jobber integration is live",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "The exact end time for business hours was not confirmed \u2014 please confirm.",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "The timezone for business hours was not confirmed \u2014 please confirm.",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "The exact office address was not provided \u2014 please confirm.",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "The primary phone number for emergency routing was not explicitly stated \u2014 please confirm.",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "The fallback action for emergency routing was not explicitly stated \u2014 please confirm.",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    }
+  ],
+  "remaining_unknowns": []
+}

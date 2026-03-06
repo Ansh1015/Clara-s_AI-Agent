@@ -1,0 +1,16 @@
+{
+  "run_timestamp": "2026-03-06T12:55:10.807960",
+  "total_runs": 1,
+  "succeeded": 1,
+  "failed": 0,
+  "total_duration_seconds": 230.42,
+  "avg_duration_per_run_seconds": 230.42,
+  "results": [
+    {
+      "account_id": "ironcladroofing",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/ironcladroofing/v2/"
+    }
+  ]
+}

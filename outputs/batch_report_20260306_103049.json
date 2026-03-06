@@ -1,0 +1,16 @@
+{
+  "run_timestamp": "2026-03-06T10:30:49.659018",
+  "total_runs": 1,
+  "succeeded": 0,
+  "failed": 1,
+  "total_duration_seconds": 121.28,
+  "avg_duration_per_run_seconds": 121.28,
+  "results": [
+    {
+      "account_id": "benselectric",
+      "pipeline": "A",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed (Groq llama-3.3-70b-versatile + Gemini gemini-1.5-flash-8b + Groq mixtral-8x7b-32768)"
+    }
+  ]
+}

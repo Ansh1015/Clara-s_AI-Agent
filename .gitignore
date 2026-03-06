@@ -1,0 +1,42 @@
+# ─── Environment & Secrets ─────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Python ────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+*.egg-info/
+dist/
+build/
+
+# ─── Logs ──────────────────────────────────────────────────
+logs/*.log
+logs/errors.log
+
+# ─── Test Scripts (touch live APIs) ────────────────────────
+test_api_keys.py
+
+# ─── OS Files ──────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ─── IDE ───────────────────────────────────────────────────
+.vscode/
+.idea/
+*.code-workspace
+.gemini/
+
+# ─── Data Files (transcripts are confidential) ─────────────
+data/demo/*.txt
+data/onboarding/*.txt
+
+# ─── Node (if any JS tools used) ───────────────────────────
+node_modules/

@@ -1,0 +1,303 @@
+{
+  "account_id": "cascadeplumbing",
+  "company_name": "Cascade Plumbing Solutions LLC",
+  "v1_created_at": "2023-10-01T00:00:00Z",
+  "v2_created_at": "2026-03-06T09:54:28.687362",
+  "total_fields_changed": 14,
+  "total_fields_added": 17,
+  "total_fields_resolved": 3,
+  "total_remaining_unknowns": 0,
+  "changes": [
+    {
+      "field": "['contact_list']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        {
+          "name": "Marcus Rivera",
+          "role": "Owner, Master Plumber",
+          "phone": "602-483-1127",
+          "email": "marcus@cascadeplumbingaz.com"
+        },
+        {
+          "name": "Tony Morales",
+          "role": "Office Manager, Dispatcher",
+          "phone": "602-555-0179",
+          "cell": "602-317-8842",
+          "email": "tony@cascadeplumbingaz.com"
+        },
+        {
+          "name": "Jesse Fuentes",
+          "role": "Lead Plumber",
+          "phone": "602-741-5539",
+          "email": "jesse@cascadeplumbingaz.com"
+        },
+        {
+          "name": "Lori Rivera",
+          "role": "Bookkeeping, Accounts Receivable",
+          "email": "lori@cascadeplumbingaz.com"
+        }
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['vip_commercial_clients']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "Garcia's Restaurants",
+        "Red Mountain Wings",
+        "Desert Bloom Caf\u00e9"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['greeting_script']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Good [morning/afternoon], Cascade Plumbing Solutions, this is Clara. How can I help you today?",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['closing_script']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Thanks for calling Cascade Plumbing Solutions. We'll be in touch.",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['service_diagnostic_fee']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "$79 diagnostic fee if asked",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['licensing']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "roc_license": "ROC-287451",
+        "insurance": {
+          "general_liability": "$1 million",
+          "commercial_auto": "$500,000"
+        },
+        "certifications": [
+          "Backflow prevention testing certification",
+          "Licensed gas line contractor"
+        ]
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['service_area']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Maricopa County, all of metro Phoenix",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['spanish_language_support']",
+      "type": "added",
+      "old_value": null,
+      "new_value": true,
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['commercial_maintenance_plans']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Clara should say we offer customized commercial maintenance plans and have someone follow up.",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['business_hours']['saturday_hours']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "start": "08:00:00",
+        "end": "12:00:00"
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['business_hours']['holidays']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "New Year's Day",
+        "Memorial Day",
+        "Fourth of July",
+        "Labor Day",
+        "Thanksgiving",
+        "Christmas Day"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['timeout_seconds']",
+      "type": "added",
+      "old_value": null,
+      "new_value": 25,
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['attempts']",
+      "type": "added",
+      "old_value": null,
+      "new_value": 2,
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['callback_promise']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "business_hours": "10 minutes",
+        "after_hours": "20 minutes"
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['source']",
+      "type": "updated",
+      "old_value": "demo_call",
+      "new_value": "onboarding_call",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['version']",
+      "type": "updated",
+      "old_value": "v1",
+      "new_value": "v2",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['created_at']",
+      "type": "updated",
+      "old_value": "2023-10-01T00:00:00Z",
+      "new_value": "2026-03-06T09:54:28.687362",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['after_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Clara answers every call, determines if it's an emergency, and routes accordingly. Emergencies are transferred to Marcus or Jesse. Non-emergencies are documented for morning follow-up.",
+      "new_value": "After hours, Clara answers calls and determines if it's an emergency. Emergency calls are transferred to Marcus first, then Jesse, with a 20-minute callback promise. Non-emergency calls have messages taken and are promised a callback by 8 AM the next business day or 7 AM Monday for weekend calls. All after-hours non-emergency details are emailed to Tony and Marcus.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['office_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Clara answers every call, qualifies the call, gathers information, and routes it to the appropriate person. Emergencies get transferred live. Non-emergencies get documented and sent to the team.",
+      "new_value": "During business hours, Clara answers calls and routes them based on the type of inquiry. Emergency calls are transferred first to Tony, then Marcus, with a 10-minute callback promise. Service calls and water heater inquiries are sent to Tony and Marcus. Repiping, trenchless sewer, and remodel leads are sent to Marcus with a text notification. Billing inquiries go to Lori and Tony. VIP commercial clients receive immediate live transfer attempts to Tony then Marcus.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['business_hours']['end']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "17:00:00",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['days']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Monday-Friday",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['start']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "07:00:00",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['timezone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "MST",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['retries']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": 2,
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['message_on_fail']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Take a message and text both Tony and Marcus",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['timeout_seconds']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": 25,
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['primary_phone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "602-483-1127",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['fallback_action']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Take a message and text both Marcus and Jesse",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_definition']['4']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Gas line leaks",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['5']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Grease trap overflows for commercial kitchens",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['integration_constraints']['0']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Clara should never create work orders or bookings in ServiceTitan. Clara takes the information and sends it to Tony, who creates work orders and bookings.",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "The exact business hours and timezone were not confirmed \u2014 please provide.",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "Jesse's phone number was not provided \u2014 please confirm.",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "The primary phone number for emergency routing was not explicitly stated \u2014 please confirm.",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    }
+  ],
+  "remaining_unknowns": []
+}

@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "agent_name": {
+            "type": "string"
+        },
+        "voice_style": {
+            "type": "string"
+        },
+        "language": {
+            "type": "string"
+        },
+        "version": {
+            "type": "string"
+        },
+        "key_variables": {
+            "type": "object"
+        },
+        "system_prompt": {
+            "type": "string"
+        },
+        "call_transfer_protocol": {
+            "type": "object",
+            "properties": {
+                "method": {
+                    "type": "string"
+                },
+                "timeout_seconds": {
+                    "type": [
+                        "number",
+                        "string",
+                        "null"
+                    ]
+                },
+                "retry_attempts": {
+                    "type": [
+                        "number",
+                        "string",
+                        "null"
+                    ]
+                },
+                "on_fail_action": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            }
+        },
+        "fallback_protocol": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        },
+        "tool_invocation_placeholders": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "integration_constraints": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "placeholders_requiring_manual_fill": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "created_at": {
+            "type": "string"
+        },
+        "source_memo_version": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "agent_name",
+        "version",
+        "system_prompt",
+        "created_at"
+    ]
+}

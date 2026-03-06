@@ -1,0 +1,16 @@
+{
+  "run_timestamp": "2026-03-05T23:15:09.813598",
+  "total_runs": 1,
+  "succeeded": 1,
+  "failed": 0,
+  "total_duration_seconds": 12.71,
+  "avg_duration_per_run_seconds": 12.71,
+  "results": [
+    {
+      "account_id": "benselectric",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/benselectric/v2/"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "notes": "Ben is enthusiastic about implementing Clara Answers to handle calls and improve business operations. He has a small team and is looking to grow his business. He has had mixed experiences with virtual assistants in the past but is optimistic about Clara's capabilities.",
+  "source": "onboarding_call",
+  "version": "v2",
+  "account_id": "benselectric",
+  "created_at": "2026-03-06T09:44:51.342527",
+  "company_name": "Ben's Electric Solutions",
+  "business_hours": {
+    "end": "5:00 PM",
+    "days": "Monday to Friday",
+    "start": "8:00 AM",
+    "timezone": "Mountain Time"
+  },
+  "office_address": "4215 Richardson Road SW, Calgary, Alberta, T3E 7B7",
+  "services_supported": [
+    "Outlet replacements",
+    "Fixture replacements",
+    "Renovations",
+    "Troubleshooting",
+    "EV chargers",
+    "Hot tub hookups",
+    "Panel changes",
+    "Service maintenance",
+    "Generator connections",
+    "Aluminum wiring mitigation",
+    "Residential projects",
+    "Commercial projects"
+  ],
+  "call_transfer_rules": {
+    "retries": 2,
+    "message_on_fail": "Take a message and let the customer know the appropriate person will call them back.",
+    "timeout_seconds": 30
+  },
+  "emergency_definition": [
+    "Emergency calls for regular property managers and general contractors",
+    "Active safety hazards such as electrical fires, sparks, water near electrical equipment, exposed wires, burning smells from electrical panels",
+    "Commercial property losing power to critical equipment like refrigeration in restaurants or gas station pumps"
+  ],
+  "questions_or_unknowns": [],
+  "emergency_routing_rules": {
+    "primary_phone": "403-975-1773",
+    "routing_order": [
+      "Ben",
+      "Dave",
+      "Mike"
+    ],
+    "fallback_action": "Take the full message, get the caller's name, phone number, the address where the issue is, exactly what's happening, and text Ben and Dave immediately with all that information. Promise a 15-minute callback.",
+    "primary_contact": "Ben"
+  },
+  "integration_constraints": [
+    "Clara does not have its own calendar and scheduler",
+    "No scheduling until Jobber integration is live"
+  ],
+  "after_hours_flow_summary": "After hours, Clara answers and lets the caller know that Ben's Electric Solutions is currently closed. She then asks if the call is an emergency. If it is, she follows the emergency routing procedures. If it is not an emergency, Clara takes the message, gets all the details, and lets the customer know that the team will be in touch by 10 AM the next business day. The message is sent to Ben and Dave immediately.",
+  "office_hours_flow_summary": "During business hours, Clara answers every call and gathers customer information including name, phone number, address, and description of the issue. She lets the customer know that the team will get back to them shortly to schedule it. For customers who specifically ask to speak to Ben or Dave, Clara attempts to transfer the call to their respective phone numbers. For calls from Cascade Property Management, Skyline Builders, or Redwood Construction, Clara attempts a live transfer to Ben or Dave during business hours.",
+  "non_emergency_routing_rules": {
+    "action": "Collect message and follow up during business hours",
+    "details": "For non-emergency calls during business hours, Clara emails both Ben and Dave. For non-emergency calls after hours, Clara takes the message and sends it to Ben and Dave, promising a callback by 10 AM the next business day."
+  },
+  "business_hours.holidays": "Closed on statutory holidays",
+  "emergency_routing_rules.timeout_seconds": 30,
+  "emergency_routing_rules.retries": 2,
+  "emergency_routing_rules.primary_contact_phone": "403-975-1773",
+  "emergency_routing_rules.secondary_contact": "Dave",
+  "emergency_routing_rules.secondary_contact_phone": "403-821-4456",
+  "emergency_routing_rules.tertiary_contact": "Mike",
+  "emergency_routing_rules.tertiary_contact_phone": "403-612-8890",
+  "emergency_routing_rules.callback_promise": "15 minutes",
+  "emergency_routing_rules.safety_advisory": "If there is an active fire or immediate danger, please call 911 right away. Stay safe and move away from the hazard.",
+  "non_emergency_routing_rules.callback_promise": "by 10 AM the next business day",
+  "service_call_rate": "$89 for the first hour including trip charge, $65 per half hour after that",
+  "warranty": "One-year warranty on all workmanship",
+  "payment_methods": "Cash, cheque, e-transfer, and all major credit cards",
+  "service_area": "Calgary and surrounding areas within about a 50 kilometer radius",
+  "credentials": {
+    "license_number": "EC-78234",
+    "registered_with": "Alberta Safety Codes Authority",
+    "insurance": {
+      "commercial_general_liability": "$2 million",
+      "automobile_liability": "$5 million"
+    }
+  },
+  "greeting_script": "Good [morning/afternoon/evening], you've reached Ben's Electric Solutions. This is Clara, how can I help you today?",
+  "closing_script": "Thanks for calling Ben's Electric Solutions. We'll be in touch soon. Have a great day.",
+  "spam_call_handling": "If someone's clearly selling something, Clara can politely end the call. Just say 'Thank you, but we're not interested at this time. Have a nice day.'",
+  "language_support": "English only for now",
+  "priority_clients": [
+    "Cascade Property Management",
+    "Skyline Builders",
+    "Redwood Construction"
+  ],
+  "services_not_supported": [
+    "Gemstone lights",
+    "Solar panel installations",
+    "Low voltage security systems",
+    "Telecommunications or data cabling"
+  ],
+  "email_addresses": {
+    "ben": "ben@benselectric.ca",
+    "dave": "dave@benselectric.ca"
+  }
+}

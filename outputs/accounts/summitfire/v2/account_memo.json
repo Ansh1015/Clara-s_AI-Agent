@@ -1,0 +1,135 @@
+{
+  "notes": "The caller expressed significant interest in the Clara Answers system and its ability to handle calls in both English and Spanish. They also highlighted the importance of handling calls during peak seasons and the need to distinguish between emergency and non-emergency calls.",
+  "source": "onboarding_call",
+  "version": "v2",
+  "account_id": "summitfire",
+  "created_at": "2026-03-06T09:47:16.446054",
+  "company_name": "Summit Fire Protection LLC",
+  "business_hours": {
+    "end": "16:30",
+    "days": "Monday through Friday",
+    "start": "07:30",
+    "timezone": "Mountain Time"
+  },
+  "office_address": "2740 South Raritan Street, Englewood, Colorado, 80110",
+  "services_supported": [
+    "fire sprinkler inspections",
+    "repair and service work",
+    "new construction",
+    "fire alarm system testing",
+    "fire extinguisher servicing",
+    "kitchen hood suppression system inspections"
+  ],
+  "call_transfer_rules": {
+    "retries": 2,
+    "message_on_fail": "Someone will call back within 15 minutes",
+    "timeout_seconds": 20
+  },
+  "emergency_definition": [
+    "a sprinkler main break",
+    "a fire alarm that won't stop going off",
+    "water flowing where it shouldn't be",
+    "fire watch situations",
+    "sprinkler system is down and they need it restored"
+  ],
+  "questions_or_unknowns": [],
+  "emergency_routing_rules": {
+    "primary_phone": "303-771-0048",
+    "routing_order": [
+      "Javier",
+      "Rachel",
+      "Luis",
+      "on-call technician"
+    ],
+    "fallback_action": "Take message and text Javier, Rachel, and Luis",
+    "primary_contact": "Javier"
+  },
+  "integration_constraints": [
+    "Clara should never create or promise to create a work order.",
+    "Clara should never tell a customer that their system passes or fails inspection.",
+    "Clara should never schedule a specific date and time for a technician visit.",
+    "Clara should not get into the details of monitoring setup."
+  ],
+  "after_hours_flow_summary": "After hours, Clara identifies the call as after-hours and asks about the situation. For emergencies, Clara routes calls directly to the on-call technician at 303-771-0048. If the on-call technician does not answer, Clara tries Javier and then takes a message, texting Javier, Rachel, and Luis immediately. For non-emergencies, Clara takes a message and assures the caller that someone will follow up by 10 AM the next business day.",
+  "office_hours_flow_summary": "During business hours, Clara answers all calls and gathers information. For emergencies, Clara routes calls to Javier first, then Rachel, then Luis, and finally to the on-call technician. For non-emergencies, Clara routes calls based on the category: inspection leads go to Javier, Rachel, and Luis; repair and service calls go to Rachel and Luis; new construction inquiries go to Javier and Tom. Scheduling questions are transferred to Rachel.",
+  "non_emergency_routing_rules": {
+    "action": "Clara takes the message and assures the caller that someone will follow up first thing in the morning.",
+    "details": null
+  },
+  "holidays_observed": [
+    "New Year's Day",
+    "Memorial Day",
+    "Fourth of July",
+    "Labor Day",
+    "Thanksgiving Day",
+    "Day after Thanksgiving",
+    "Christmas Eve",
+    "Christmas Day",
+    "Half day on Wednesday before Thanksgiving"
+  ],
+  "vip_clients": [
+    {
+      "name": "Pinnacle Property Group",
+      "contact": "Marcus Johnson"
+    },
+    {
+      "name": "Greenfield Properties",
+      "contact": "Sandra Liu"
+    },
+    {
+      "name": "Metro Commercial Real Estate",
+      "contact": "Dave Robertson"
+    },
+    {
+      "name": "Apex General Contractors",
+      "contact": "Rick Torres"
+    },
+    {
+      "name": "Skyline Development",
+      "contact": "Maria Hernandez"
+    },
+    {
+      "name": "Colorado Health Systems",
+      "contact": "Jennifer Walsh"
+    }
+  ],
+  "team_members": [
+    {
+      "name": "Javier Cruz",
+      "role": "Owner",
+      "phone": "303-556-1829",
+      "email": "javier@summitfireprotection.com"
+    },
+    {
+      "name": "Rachel Nguyen",
+      "role": "Office Manager",
+      "phone": "303-991-4653",
+      "email": "rachel@summitfireprotection.com"
+    },
+    {
+      "name": "Tom Whitfield",
+      "role": "Senior Project Manager",
+      "phone": "303-448-7721",
+      "email": "tom@summitfireprotection.com"
+    },
+    {
+      "name": "Luis Delgado",
+      "role": "Project Manager",
+      "phone": "303-662-9103",
+      "email": "luis@summitfireprotection.com"
+    }
+  ],
+  "fire_extinguisher_inspection_price": "$25 per extinguisher",
+  "service_area": "Denver metro area and Front Range, approximately a 60-mile radius from the office",
+  "licensing_and_credentials": {
+    "license_number": "FPC-2019-0847",
+    "certifications": "NICET certified technicians",
+    "insurance": {
+      "commercial_general_liability": "$2 million",
+      "professional_liability": "$1 million",
+      "workers_compensation": "Covered"
+    },
+    "bonded": true
+  },
+  "ascr_program": "ASCR equals annual sprinkler inspection for Denver buildings"
+}

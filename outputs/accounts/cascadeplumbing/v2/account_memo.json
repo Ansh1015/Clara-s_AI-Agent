@@ -1,0 +1,123 @@
+{
+  "notes": "Marcus is enthusiastic about implementing Clara to handle calls more efficiently. He is particularly interested in the Spanish language capabilities and the ability to handle after-hours emergencies.",
+  "source": "onboarding_call",
+  "version": "v2",
+  "account_id": "cascadeplumbing",
+  "created_at": "2026-03-06T09:54:28.687362",
+  "company_name": "Cascade Plumbing Solutions LLC",
+  "business_hours": {
+    "end": "17:00:00",
+    "days": "Monday-Friday",
+    "start": "07:00:00",
+    "timezone": "MST",
+    "saturday_hours": {
+      "start": "08:00:00",
+      "end": "12:00:00"
+    },
+    "holidays": [
+      "New Year's Day",
+      "Memorial Day",
+      "Fourth of July",
+      "Labor Day",
+      "Thanksgiving",
+      "Christmas Day"
+    ]
+  },
+  "office_address": "5612 West Thomas Road, Suite 8, Phoenix, Arizona 85031",
+  "services_supported": [
+    "Residential service calls",
+    "Water heater installations",
+    "Repiping",
+    "Kitchen and bathroom remodels",
+    "Light commercial work",
+    "Sewer line repair and replacement",
+    "Trenchless sewer repair",
+    "Hydro-jetting for drain cleaning"
+  ],
+  "call_transfer_rules": {
+    "retries": 2,
+    "message_on_fail": "Take a message and text both Tony and Marcus",
+    "timeout_seconds": 25
+  },
+  "emergency_definition": [
+    "Active leaks",
+    "Sewer backups",
+    "Water heater bursts",
+    "Significant flooding",
+    "Gas line leaks",
+    "Grease trap overflows for commercial kitchens"
+  ],
+  "questions_or_unknowns": [],
+  "emergency_routing_rules": {
+    "primary_phone": "602-483-1127",
+    "routing_order": [
+      "Marcus",
+      "Jesse"
+    ],
+    "fallback_action": "Take a message and text both Marcus and Jesse",
+    "primary_contact": "Marcus",
+    "timeout_seconds": 25,
+    "attempts": 2,
+    "callback_promise": {
+      "business_hours": "10 minutes",
+      "after_hours": "20 minutes"
+    }
+  },
+  "integration_constraints": [
+    "Clara should never create work orders or bookings in ServiceTitan. Clara takes the information and sends it to Tony, who creates work orders and bookings."
+  ],
+  "after_hours_flow_summary": "After hours, Clara answers calls and determines if it's an emergency. Emergency calls are transferred to Marcus first, then Jesse, with a 20-minute callback promise. Non-emergency calls have messages taken and are promised a callback by 8 AM the next business day or 7 AM Monday for weekend calls. All after-hours non-emergency details are emailed to Tony and Marcus.",
+  "office_hours_flow_summary": "During business hours, Clara answers calls and routes them based on the type of inquiry. Emergency calls are transferred first to Tony, then Marcus, with a 10-minute callback promise. Service calls and water heater inquiries are sent to Tony and Marcus. Repiping, trenchless sewer, and remodel leads are sent to Marcus with a text notification. Billing inquiries go to Lori and Tony. VIP commercial clients receive immediate live transfer attempts to Tony then Marcus.",
+  "non_emergency_routing_rules": {
+    "action": "Take a message and follow up during business hours",
+    "details": null
+  },
+  "contact_list": [
+    {
+      "name": "Marcus Rivera",
+      "role": "Owner, Master Plumber",
+      "phone": "602-483-1127",
+      "email": "marcus@cascadeplumbingaz.com"
+    },
+    {
+      "name": "Tony Morales",
+      "role": "Office Manager, Dispatcher",
+      "phone": "602-555-0179",
+      "cell": "602-317-8842",
+      "email": "tony@cascadeplumbingaz.com"
+    },
+    {
+      "name": "Jesse Fuentes",
+      "role": "Lead Plumber",
+      "phone": "602-741-5539",
+      "email": "jesse@cascadeplumbingaz.com"
+    },
+    {
+      "name": "Lori Rivera",
+      "role": "Bookkeeping, Accounts Receivable",
+      "email": "lori@cascadeplumbingaz.com"
+    }
+  ],
+  "vip_commercial_clients": [
+    "Garcia's Restaurants",
+    "Red Mountain Wings",
+    "Desert Bloom Caf\u00e9"
+  ],
+  "greeting_script": "Good [morning/afternoon], Cascade Plumbing Solutions, this is Clara. How can I help you today?",
+  "closing_script": "Thanks for calling Cascade Plumbing Solutions. We'll be in touch.",
+  "service_diagnostic_fee": "$79 diagnostic fee if asked",
+  "licensing": {
+    "roc_license": "ROC-287451",
+    "insurance": {
+      "general_liability": "$1 million",
+      "commercial_auto": "$500,000"
+    },
+    "certifications": [
+      "Backflow prevention testing certification",
+      "Licensed gas line contractor"
+    ]
+  },
+  "service_area": "Maricopa County, all of metro Phoenix",
+  "spanish_language_support": true,
+  "commercial_maintenance_plans": "Clara should say we offer customized commercial maintenance plans and have someone follow up."
+}

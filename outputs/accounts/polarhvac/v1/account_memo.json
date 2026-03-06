@@ -1,0 +1,55 @@
+{
+  "account_id": "polarhvac",
+  "company_name": "Polar HVAC Services LLC",
+  "business_hours": {
+    "days": null,
+    "start": null,
+    "end": null,
+    "timezone": null
+  },
+  "office_address": "7921 Brooklyn Boulevard, Suite 104, Brooklyn Park, Minnesota, 55445",
+  "services_supported": [
+    "HVAC",
+    "Furnace",
+    "Air Conditioning",
+    "Ductless Mini-Splits"
+  ],
+  "emergency_definition": [
+    "Furnace failures",
+    "Heat outages in extreme cold",
+    "Gas smells near furnaces"
+  ],
+  "emergency_routing_rules": {
+    "primary_contact": "On-call technician",
+    "primary_phone": "612-555-0288",
+    "routing_order": [
+      "On-call technician",
+      "Dan",
+      "Karen"
+    ],
+    "fallback_action": "Send an emergency text to Karen and Dan"
+  },
+  "non_emergency_routing_rules": {
+    "action": "Collect message and follow up during business hours",
+    "details": "Clara takes the message, promises a callback, and sends it to the appropriate team member."
+  },
+  "call_transfer_rules": {
+    "timeout_seconds": null,
+    "retries": null,
+    "message_on_fail": null
+  },
+  "integration_constraints": [
+    "Never accept geothermal system service or installation calls"
+  ],
+  "after_hours_flow_summary": "Clara answers every call, qualifies the urgency, and routes emergencies to the on-call technician. Non-emergencies are documented and followed up during business hours.",
+  "office_hours_flow_summary": "Clara answers every call, gathers information, and routes it to the appropriate team member based on the call type and urgency.",
+  "questions_or_unknowns": [
+    "What are the exact business hours for Polar HVAC Services?",
+    "What is the exact process for handling Comfort Club membership inquiries and sign-ups?",
+    "What are the specific brands and models of equipment that Polar HVAC Services specializes in?"
+  ],
+  "notes": "Karen and Dan are co-owners of Polar HVAC Services, which has been in operation for 15 years. They have a team of 11, including technicians, an install crew lead, a dispatcher/office assistant, and a part-time bookkeeper. They are currently turning down work due to inability to answer calls promptly. They use ServiceTitan for field service management.",
+  "source": "demo_call",
+  "version": "v1",
+  "created_at": "2023-11-08T00:00:00Z"
+}

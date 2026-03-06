@@ -1,0 +1,306 @@
+{
+  "account_id": "summitfire",
+  "company_name": "Summit Fire Protection LLC",
+  "v1_created_at": "2023-10-06T14:30:00Z",
+  "v2_created_at": "2026-03-06T09:47:16.446054",
+  "total_fields_changed": 15,
+  "total_fields_added": 14,
+  "total_fields_resolved": 3,
+  "total_remaining_unknowns": 0,
+  "changes": [
+    {
+      "field": "['holidays_observed']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "New Year's Day",
+        "Memorial Day",
+        "Fourth of July",
+        "Labor Day",
+        "Thanksgiving Day",
+        "Day after Thanksgiving",
+        "Christmas Eve",
+        "Christmas Day",
+        "Half day on Wednesday before Thanksgiving"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['vip_clients']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        {
+          "name": "Pinnacle Property Group",
+          "contact": "Marcus Johnson"
+        },
+        {
+          "name": "Greenfield Properties",
+          "contact": "Sandra Liu"
+        },
+        {
+          "name": "Metro Commercial Real Estate",
+          "contact": "Dave Robertson"
+        },
+        {
+          "name": "Apex General Contractors",
+          "contact": "Rick Torres"
+        },
+        {
+          "name": "Skyline Development",
+          "contact": "Maria Hernandez"
+        },
+        {
+          "name": "Colorado Health Systems",
+          "contact": "Jennifer Walsh"
+        }
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['team_members']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        {
+          "name": "Javier Cruz",
+          "role": "Owner",
+          "phone": "303-556-1829",
+          "email": "javier@summitfireprotection.com"
+        },
+        {
+          "name": "Rachel Nguyen",
+          "role": "Office Manager",
+          "phone": "303-991-4653",
+          "email": "rachel@summitfireprotection.com"
+        },
+        {
+          "name": "Tom Whitfield",
+          "role": "Senior Project Manager",
+          "phone": "303-448-7721",
+          "email": "tom@summitfireprotection.com"
+        },
+        {
+          "name": "Luis Delgado",
+          "role": "Project Manager",
+          "phone": "303-662-9103",
+          "email": "luis@summitfireprotection.com"
+        }
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['fire_extinguisher_inspection_price']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "$25 per extinguisher",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['service_area']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Denver metro area and Front Range, approximately a 60-mile radius from the office",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['licensing_and_credentials']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "license_number": "FPC-2019-0847",
+        "certifications": "NICET certified technicians",
+        "insurance": {
+          "commercial_general_liability": "$2 million",
+          "professional_liability": "$1 million",
+          "workers_compensation": "Covered"
+        },
+        "bonded": true
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['ascr_program']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "ASCR equals annual sprinkler inspection for Denver buildings",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['source']",
+      "type": "updated",
+      "old_value": "demo_call",
+      "new_value": "onboarding_call",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['version']",
+      "type": "updated",
+      "old_value": "v1",
+      "new_value": "v2",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['created_at']",
+      "type": "updated",
+      "old_value": "2023-10-06T14:30:00Z",
+      "new_value": "2026-03-06T09:47:16.446054",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['after_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Clara answers, identifies that it's after-hours, and asks about the situation. If it's a true emergency, Clara immediately tries to connect the caller with the on-call technician. If it's not a true emergency, Clara takes the message and assures the caller that someone will follow up first thing in the morning.",
+      "new_value": "After hours, Clara identifies the call as after-hours and asks about the situation. For emergencies, Clara routes calls directly to the on-call technician at 303-771-0048. If the on-call technician does not answer, Clara tries Javier and then takes a message, texting Javier, Rachel, and Luis immediately. For non-emergencies, Clara takes a message and assures the caller that someone will follow up by 10 AM the next business day.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['business_hours']['end']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "16:30",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['days']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Monday through Friday",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['start']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "07:30",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['timezone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Mountain Time",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['retries']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": 2,
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['message_on_fail']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Someone will call back within 15 minutes",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['call_transfer_rules']['timeout_seconds']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": 20,
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['primary_phone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "303-771-0048",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['fallback_action']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Take message and text Javier, Rachel, and Luis",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['primary_contact']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Javier",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['office_hours_flow_summary']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "During business hours, Clara answers all calls and gathers information. For emergencies, Clara routes calls to Javier first, then Rachel, then Luis, and finally to the on-call technician. For non-emergencies, Clara routes calls based on the category: inspection leads go to Javier, Rachel, and Luis; repair and service calls go to Rachel and Luis; new construction inquiries go to Javier and Tom. Scheduling questions are transferred to Rachel.",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_routing_rules']['routing_order']['0']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Javier",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['routing_order']['1']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Rachel",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['routing_order']['2']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Luis",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['integration_constraints']['0']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Clara should never create or promise to create a work order.",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['integration_constraints']['1']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Clara should never tell a customer that their system passes or fails inspection.",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['integration_constraints']['2']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Clara should never schedule a specific date and time for a technician visit.",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['integration_constraints']['3']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Clara should not get into the details of monitoring setup.",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "What are the exact business hours for Summit Fire Protection?",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "What is the exact emergency routing order and fallback actions?",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "What are the specific call transfer rules and messages?",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    }
+  ],
+  "remaining_unknowns": []
+}

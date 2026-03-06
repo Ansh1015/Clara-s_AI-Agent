@@ -1,0 +1,53 @@
+{
+  "report_generated": "2026-03-06T09:55:04.411269",
+  "mistral": {
+    "prompt_tokens": 10253,
+    "completion_tokens": 2695,
+    "total_tokens": 12948,
+    "calls": 2,
+    "model": "mistral-medium-2505",
+    "cost": "$0.00"
+  },
+  "mistral_fallback": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "calls": 0,
+    "model": "mistral-small-2506",
+    "cost": "$0.00"
+  },
+  "gemini": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "calls": 0,
+    "model": "gemini-2.5-flash-lite",
+    "cost": "$0.00"
+  },
+  "gemini_fallback": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "calls": 0,
+    "model": "gemini-2.5-flash",
+    "cost": "$0.00"
+  },
+  "groq": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "calls": 0,
+    "model": "llama-3.3-70b-versatile",
+    "cost": "$0.00"
+  },
+  "groq_fallback": {
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "total_tokens": 0,
+    "calls": 0,
+    "model": "llama-3.1-8b-instant",
+    "cost": "$0.00"
+  },
+  "total_tokens_all_providers": 12948,
+  "total_cost": "$0.00"
+}

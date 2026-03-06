@@ -1,0 +1,350 @@
+{
+  "account_id": "polarhvac",
+  "company_name": "Polar HVAC Services LLC",
+  "v1_created_at": "2023-11-08T00:00:00Z",
+  "v2_created_at": "2026-03-06T09:46:27.858447",
+  "total_fields_changed": 12,
+  "total_fields_added": 19,
+  "total_fields_resolved": 2,
+  "total_remaining_unknowns": 1,
+  "changes": [
+    {
+      "field": "['holiday_closure_days']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "New Year's Day",
+        "Memorial Day",
+        "Fourth of July",
+        "Labor Day",
+        "Thanksgiving Day",
+        "Christmas Eve",
+        "Christmas Day"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['team_members']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        {
+          "name": "Karen Lindstrom",
+          "role": "Co-owner",
+          "phone": "612-445-2831",
+          "email": "karen@polarhvac.com"
+        },
+        {
+          "name": "Dan Lindstrom",
+          "role": "Co-owner and Master HVAC Technician",
+          "phone": "612-339-7104",
+          "email": "dan@polarhvac.com"
+        },
+        {
+          "name": "Brittany Chen",
+          "role": "Dispatcher and Office Assistant",
+          "phone": "612-555-0193",
+          "email": "brittany@polarhvac.com"
+        },
+        {
+          "name": "Aaron Kowalski",
+          "role": "Comfort Advisor",
+          "phone": "612-517-3389",
+          "email": "aaron@polarhvac.com"
+        },
+        {
+          "name": "Marcus Johnson",
+          "role": "Install Crew Lead",
+          "phone": "612-903-2248",
+          "email": null
+        }
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['vip_commercial_accounts']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        {
+          "name": "Northern Property Group",
+          "contact": "Jessica Tran"
+        },
+        {
+          "name": "Great Lakes Restaurant Holdings",
+          "contact": "Robert Kim"
+        },
+        {
+          "name": "Heartland Senior Living",
+          "contact": "Patricia Hoffman"
+        },
+        {
+          "name": "Metro Edge Realty",
+          "contact": "James Okafor"
+        },
+        {
+          "name": "Twin Cities Schools Cooperative",
+          "contact": "Amanda Reeves"
+        }
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['comfort_club_pricing']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "annual": "$189",
+        "monthly": "$16.99"
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['comfort_club_benefits']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "Two tune-ups a year",
+        "Priority scheduling",
+        "15 percent off all repairs",
+        "No overtime charges for emergency calls"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['service_call_pricing']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "diagnostic_fee": "$99",
+        "labor_rate": "$85 per half hour",
+        "details": "The $99 diagnostic fee covers the trip charge and the initial assessment. The cost of any repairs will be determined after our technician evaluates the issue and provides you with options before doing any work."
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['safety_advisories']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "gas_smell_or_co_detector": "Clara should immediately tell the caller to leave the home, get to fresh air, and call 911."
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['call_routing_timeout']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "timeout_seconds": 20,
+        "retries": 2
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['seasonal_operations']",
+      "type": "added",
+      "old_value": null,
+      "new_value": {
+        "heating_season": {
+          "months": "November through March",
+          "emergency_coverage": "24/7"
+        },
+        "cooling_season": {
+          "months": "April through October",
+          "emergency_coverage": "Monday through Friday only"
+        }
+      },
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['brand_differentiators']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "15 years serving the Twin Cities",
+        "Family-owned and operated",
+        "Authorized dealers for Lennox, Carrier, and Trane",
+        "All techs are NATE certified",
+        "24/7 emergency service during heating season",
+        "100 percent satisfaction guarantee",
+        "Financing through GreenSky for larger installations"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['call_greeting']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Good [morning/afternoon/evening], Polar HVAC Services, this is Clara. How can I help you?",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['call_closing']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Thanks for calling Polar HVAC Services. We'll be in touch. Stay warm/cool.",
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['integration_constraints_added']",
+      "type": "added",
+      "old_value": null,
+      "new_value": [
+        "Clara should never create or promise to create a work order in ServiceTitan",
+        "Clara should never give a specific time for when a technician will arrive",
+        "Clara should never tell a customer what's wrong with their system as a definitive diagnosis",
+        "Clara should never discuss competitor pricing or compare Polar HVAC to other companies",
+        "Clara should never say 'I don't know'",
+        "Clara should never say Polar HVAC is 'too busy' or 'booked up'",
+        "Clara should never promise a specific price for any repair or installation",
+        "Clara should never use technical jargon that a homeowner wouldn't understand without explaining it simply",
+        "Clara should never tell a customer to 'just turn it off and wait' for a gas smell or CO alarm"
+      ],
+      "reason": "New field added during onboarding"
+    },
+    {
+      "field": "['source']",
+      "type": "updated",
+      "old_value": "demo_call",
+      "new_value": "onboarding_call",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['version']",
+      "type": "updated",
+      "old_value": "v1",
+      "new_value": "v2",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['created_at']",
+      "type": "updated",
+      "old_value": "2023-11-08T00:00:00Z",
+      "new_value": "2026-03-06T09:46:27.858447",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['emergency_routing_rules']['fallback_action']",
+      "type": "updated",
+      "old_value": "Send an emergency text to Karen and Dan",
+      "new_value": "Take the full message, text all three numbers plus the on-call phone, and promise a callback within 20 minutes",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['after_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Clara answers every call, qualifies the urgency, and routes emergencies to the on-call technician. Non-emergencies are documented and followed up during business hours.",
+      "new_value": "After hours, Clara qualifies the urgency of each call. Emergencies are routed to the on-call technician first, then Dan, then Karen, with a 20-minute callback promise. Non-emergencies are documented with a promise to follow up by 9 AM the next business day. During heating season (November-March), emergency coverage is 24/7. During cooling season (April-October), emergency coverage is Monday through Friday only. Clara provides basic troubleshooting tips for non-emergency after-hours calls when appropriate.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['office_hours_flow_summary']",
+      "type": "updated",
+      "old_value": "Clara answers every call, gathers information, and routes it to the appropriate team member based on the call type and urgency.",
+      "new_value": "During business hours, Clara answers every call and routes it based on the call type. Service calls are transferred to Brittany or Dan via email. Comfort Club inquiries go to Brittany. Installation leads are sent to Aaron, Karen, Dan, and Brittany. Warranty claims and billing questions are directed to Brittany. Active installation issues are routed to Brittany, then Marcus, then Karen. Clara attempts live transfers where appropriate and takes messages with follow-up promises.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['non_emergency_routing_rules']['action']",
+      "type": "updated",
+      "old_value": "Collect message and follow up during business hours",
+      "new_value": "Collect message and follow up by 9 AM next business day",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['non_emergency_routing_rules']['details']",
+      "type": "updated",
+      "old_value": "Clara takes the message, promises a callback, and sends it to the appropriate team member.",
+      "new_value": "Clara takes the message, provides basic troubleshooting tips if appropriate, and sends it to Brittany and Dan via email.",
+      "reason": "Updated during onboarding"
+    },
+    {
+      "field": "['business_hours']['end']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "17:00:00",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['days']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Monday-Friday",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['start']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "07:00:00",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['business_hours']['timezone']",
+      "type": "updated",
+      "old_value": null,
+      "new_value": "Central Time",
+      "reason": "Updated during onboarding (type changed)"
+    },
+    {
+      "field": "['emergency_definition']['3']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Complete loss of heating when outdoor temperatures are below 32 degrees Fahrenheit",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['4']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Situations where the customer reports a gas smell near the furnace, boiler, or water heater",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['5']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Carbon monoxide detector going off and they suspect the HVAC system",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['6']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "A furnace or boiler making unusual loud noises like banging, popping, or screeching, combined with a failure to operate",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['7']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Water leaking from the boiler or HVAC system that's causing active property damage",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "['emergency_definition']['8']",
+      "type": "added",
+      "old_value": null,
+      "new_value": "Complete loss of AC when the customer is elderly, has small children, or has a medical condition",
+      "reason": "New list item added during onboarding"
+    },
+    {
+      "field": "What are the exact business hours for Polar HVAC Services?",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    },
+    {
+      "field": "What is the exact process for handling Comfort Club membership inquiries and sign-ups?",
+      "type": "resolved",
+      "old_value": "unknown",
+      "new_value": "resolved",
+      "reason": "Clarified during onboarding call"
+    }
+  ],
+  "remaining_unknowns": [
+    "What are the specific brands and models of equipment that Polar HVAC Services specializes in?"
+  ]
+}

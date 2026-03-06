@@ -1,0 +1,70 @@
+{
+  "run_timestamp": "2026-03-06T13:34:14.877469",
+  "total_runs": 10,
+  "succeeded": 8,
+  "failed": 2,
+  "total_duration_seconds": 1560.8,
+  "avg_duration_per_run_seconds": 156.08,
+  "results": [
+    {
+      "account_id": "benselectric",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/benselectric/v1/"
+    },
+    {
+      "account_id": "cascadeplumbing",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/cascadeplumbing/v1/"
+    },
+    {
+      "account_id": "ironcladroofing",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/ironcladroofing/v1/"
+    },
+    {
+      "account_id": "polarhvac",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/polarhvac/v1/"
+    },
+    {
+      "account_id": "summitfire",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/summitfire/v1/"
+    },
+    {
+      "account_id": "benselectric",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: Schema validation failed: {'contact': 'Ben', 'phone': '403-975-1773'} is not of type 'string'\n\nFailed validating 'type' in schema['properties']['emergency_routing_rules']['properties']['routing_order']['items']:\n    {'type': 'string'}\n\nOn instance['emergency_routing_rules']['routing_order'][0]:\n    {'contact': 'Ben', 'phone': '403-975-1773'}"
+    },
+    {
+      "account_id": "cascadeplumbing",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/cascadeplumbing/v2/"
+    },
+    {
+      "account_id": "ironcladroofing",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/ironcladroofing/v2/"
+    },
+    {
+      "account_id": "polarhvac",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: 'list' object has no attribute 'get'"
+    },
+    {
+      "account_id": "summitfire",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/summitfire/v2/"
+    }
+  ]
+}

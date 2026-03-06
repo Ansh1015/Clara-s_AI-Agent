@@ -1,0 +1,16 @@
+{
+  "run_timestamp": "2026-03-06T13:37:50.763384",
+  "total_runs": 1,
+  "succeeded": 1,
+  "failed": 0,
+  "total_duration_seconds": 97.22,
+  "avg_duration_per_run_seconds": 97.22,
+  "results": [
+    {
+      "account_id": "polarhvac",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/polarhvac/v2/"
+    }
+  ]
+}

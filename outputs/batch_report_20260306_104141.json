@@ -1,0 +1,16 @@
+{
+  "run_timestamp": "2026-03-06T10:41:41.026034",
+  "total_runs": 1,
+  "succeeded": 0,
+  "failed": 1,
+  "total_duration_seconds": 143.68,
+  "avg_duration_per_run_seconds": 143.68,
+  "results": [
+    {
+      "account_id": "benselectric",
+      "pipeline": "A",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed: Groq llama3-70b-8192 \u2192 Gemini gemini-2.0-flash \u2192 Gemini gemini-2.0-flash-lite \u2192 Groq llama3-8b-8192"
+    }
+  ]
+}

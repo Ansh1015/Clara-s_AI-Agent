@@ -1,0 +1,40 @@
+{
+  "run_timestamp": "2026-03-06T12:41:38.663824",
+  "total_runs": 5,
+  "succeeded": 5,
+  "failed": 0,
+  "total_duration_seconds": 253.44,
+  "avg_duration_per_run_seconds": 50.69,
+  "results": [
+    {
+      "account_id": "benselectric",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/benselectric/v1/"
+    },
+    {
+      "account_id": "cascadeplumbing",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/cascadeplumbing/v1/"
+    },
+    {
+      "account_id": "ironcladroofing",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/ironcladroofing/v1/"
+    },
+    {
+      "account_id": "polarhvac",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/polarhvac/v1/"
+    },
+    {
+      "account_id": "summitfire",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/summitfire/v1/"
+    }
+  ]
+}

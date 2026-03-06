@@ -1,0 +1,70 @@
+{
+  "run_timestamp": "2026-03-06T10:39:39.514047",
+  "total_runs": 10,
+  "succeeded": 4,
+  "failed": 6,
+  "total_duration_seconds": 1255.8,
+  "avg_duration_per_run_seconds": 125.58,
+  "results": [
+    {
+      "account_id": "benselectric",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/benselectric/v1/"
+    },
+    {
+      "account_id": "cascadeplumbing",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/cascadeplumbing/v1/"
+    },
+    {
+      "account_id": "ironcladroofing",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/ironcladroofing/v1/"
+    },
+    {
+      "account_id": "polarhvac",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/polarhvac/v1/"
+    },
+    {
+      "account_id": "summitfire",
+      "pipeline": "A",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed (Groq + Gemini)"
+    },
+    {
+      "account_id": "benselectric",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed (Groq + Gemini)"
+    },
+    {
+      "account_id": "cascadeplumbing",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed (Groq + Gemini)"
+    },
+    {
+      "account_id": "ironcladroofing",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed (Groq + Gemini)"
+    },
+    {
+      "account_id": "polarhvac",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed (Groq + Gemini)"
+    },
+    {
+      "account_id": "summitfire",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: v1 memo not found anywhere \u2014 run Pipeline A first"
+    }
+  ]
+}

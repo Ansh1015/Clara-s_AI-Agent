@@ -1,0 +1,57 @@
+{
+  "account_id": "cascadeplumbing",
+  "company_name": "Cascade Plumbing Solutions LLC",
+  "business_hours": {
+    "days": null,
+    "start": null,
+    "end": null,
+    "timezone": null
+  },
+  "office_address": "5612 West Thomas Road, Suite 8, Phoenix, Arizona 85031",
+  "services_supported": [
+    "Residential service calls",
+    "Water heater installations",
+    "Repiping",
+    "Kitchen and bathroom remodels",
+    "Light commercial work",
+    "Sewer line repair and replacement",
+    "Trenchless sewer repair",
+    "Hydro-jetting for drain cleaning"
+  ],
+  "emergency_definition": [
+    "Active leaks",
+    "Sewer backups",
+    "Water heater bursts",
+    "Significant flooding"
+  ],
+  "emergency_routing_rules": {
+    "primary_contact": "Marcus",
+    "primary_phone": null,
+    "routing_order": [
+      "Marcus",
+      "Jesse"
+    ],
+    "fallback_action": null
+  },
+  "non_emergency_routing_rules": {
+    "action": "Take a message and follow up during business hours",
+    "details": null
+  },
+  "call_transfer_rules": {
+    "timeout_seconds": null,
+    "retries": null,
+    "message_on_fail": null
+  },
+  "integration_constraints": [],
+  "after_hours_flow_summary": "Clara answers every call, determines if it's an emergency, and routes accordingly. Emergencies are transferred to Marcus or Jesse. Non-emergencies are documented for morning follow-up.",
+  "office_hours_flow_summary": "Clara answers every call, qualifies the call, gathers information, and routes it to the appropriate person. Emergencies get transferred live. Non-emergencies get documented and sent to the team.",
+  "questions_or_unknowns": [
+    "The exact business hours and timezone were not confirmed \u2014 please provide.",
+    "Jesse's phone number was not provided \u2014 please confirm.",
+    "The primary phone number for emergency routing was not explicitly stated \u2014 please confirm."
+  ],
+  "notes": "Marcus is enthusiastic about implementing Clara to handle calls more efficiently. He is particularly interested in the Spanish language capabilities and the ability to handle after-hours emergencies.",
+  "source": "demo_call",
+  "version": "v1",
+  "created_at": "2023-10-01T00:00:00Z"
+}

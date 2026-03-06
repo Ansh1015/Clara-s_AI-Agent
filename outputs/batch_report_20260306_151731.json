@@ -1,0 +1,70 @@
+{
+  "run_timestamp": "2026-03-06T15:17:31.269363",
+  "total_runs": 10,
+  "succeeded": 8,
+  "failed": 2,
+  "total_duration_seconds": 319.87,
+  "avg_duration_per_run_seconds": 31.99,
+  "results": [
+    {
+      "account_id": "benselectric",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/benselectric/v1/"
+    },
+    {
+      "account_id": "cascadeplumbing",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/cascadeplumbing/v1/"
+    },
+    {
+      "account_id": "ironcladroofing",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/ironcladroofing/v1/"
+    },
+    {
+      "account_id": "polarhvac",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/polarhvac/v1/"
+    },
+    {
+      "account_id": "summitfire",
+      "pipeline": "A",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/summitfire/v1/"
+    },
+    {
+      "account_id": "benselectric",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/benselectric/v2/"
+    },
+    {
+      "account_id": "cascadeplumbing",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: Schema validation failed: {'callback_promise_weekday': '8 AM next business day', 'callback_promise_weekend': '7 AM Monday'} is not of type 'string', 'null'\n\nFailed validating 'type' in schema['properties']['non_emergency_routing_rules']['properties']['details']:\n    {'type': ['string', 'null']}\n\nOn instance['non_emergency_routing_rules']['details']:\n    {'callback_promise_weekday': '8 AM next business day',\n     'callback_promise_weekend': '7 AM Monday'}"
+    },
+    {
+      "account_id": "ironcladroofing",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: Schema validation failed: {'repair_requests': ['Shawna', 'Derek'], 're_roof_inquiries': ['Derek', 'Ryan'], 'commercial_inquiries': ['Ryan', 'Amy'], 'active_job_issues': ['Shawna', 'Kevin', 'Ryan'], 'insurance_questions': ['Shawna'], 'supplement_issues': ['Derek', 'Shawna'], 'billing_questions': ['Shawna'], 'warranty_callbacks': ['Shawna']} is not of type 'string', 'null'\n\nFailed validating 'type' in schema['properties']['non_emergency_routing_rules']['properties']['details']:\n    {'type': ['string', 'null']}\n\nOn instance['non_emergency_routing_rules']['details']:\n    {'active_job_issues': ['Shawna', 'Kevin', 'Ryan'],\n     'billing_questions': ['Shawna'],\n     'commercial_inquiries': ['Ryan', 'Amy'],\n     'insurance_questions': ['Shawna'],\n     're_roof_inquiries': ['Derek', 'Ryan'],\n     'repair_requests': ['Shawna', 'Derek'],\n     'supplement_issues': ['Derek', 'Shawna'],\n     'warranty_callbacks': ['Shawna']}"
+    },
+    {
+      "account_id": "polarhvac",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/polarhvac/v2/"
+    },
+    {
+      "account_id": "summitfire",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/summitfire/v2/"
+    }
+  ]
+}

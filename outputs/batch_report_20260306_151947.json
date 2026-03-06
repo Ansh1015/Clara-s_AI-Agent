@@ -1,0 +1,16 @@
+{
+  "run_timestamp": "2026-03-06T15:19:47.648743",
+  "total_runs": 1,
+  "succeeded": 1,
+  "failed": 0,
+  "total_duration_seconds": 54.81,
+  "avg_duration_per_run_seconds": 54.81,
+  "results": [
+    {
+      "account_id": "cascadeplumbing",
+      "pipeline": "B",
+      "status": "SUCCESS",
+      "output_path": "outputs/accounts/cascadeplumbing/v2/"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "notes": "Ryan is highly motivated to implement Clara due to significant missed revenue during storm events. The company experiences high call volumes during storm events, which are critical for their business.",
+  "source": "onboarding_call",
+  "version": "v2",
+  "account_id": "ironcladroofing",
+  "created_at": "2026-03-06T09:50:27.363110",
+  "company_name": "Ironclad Roofing and Restoration LLC",
+  "business_hours": {
+    "end": "17:00:00",
+    "days": "Monday-Friday",
+    "start": "08:00:00",
+    "timezone": "Central Time"
+  },
+  "office_address": "4210 Ashland City Highway, Nashville, Tennessee, 37218",
+  "services_supported": [
+    "residential roofing",
+    "commercial roofing",
+    "insurance restoration",
+    "roof repairs",
+    "new roofs",
+    "re-roofing",
+    "flat roofs (TPO, EPDM, modified bitumen)",
+    "gutters",
+    "siding",
+    "storm damage inspections",
+    "skylights"
+  ],
+  "call_transfer_rules": {
+    "retries": 2,
+    "message_on_fail": "Take message and text",
+    "timeout_seconds": 20
+  },
+  "emergency_definition": [
+    "active roof leak during rain",
+    "storm damage exposing roof structure",
+    "structural concerns",
+    "tarp requests"
+  ],
+  "questions_or_unknowns": [],
+  "emergency_routing_rules": {
+    "primary_phone": "615-882-4410",
+    "routing_order": [
+      "Ryan",
+      "Amy"
+    ],
+    "fallback_action": "Take message and text both Ryan and Amy",
+    "primary_contact": "Ryan"
+  },
+  "integration_constraints": [
+    "Clara should never create entries in JobNimbus",
+    "Clara should never promise a specific inspection date or time"
+  ],
+  "after_hours_flow_summary": "After hours, Clara answers calls and routes emergencies to Ryan first, then Amy. Non-emergencies are captured for follow-up the next business day. For active leaks, Clara advises customers to place buckets under drips and move valuables, promising a callback within 30 minutes.",
+  "office_hours_flow_summary": "During business hours, Clara answers calls and routes them appropriately. Shawna handles operational calls, Derek manages sales leads, and Ryan handles commercial inquiries. Emergency calls are routed to Shawna first, then Ryan, then Amy with a 20-second timeout and two attempts each. If no one answers, a message is taken and texted to all three.",
+  "non_emergency_routing_rules": {
+    "action": null,
+    "details": null
+  },
+  "team_members": [
+    {
+      "name": "Ryan Calloway",
+      "role": "Owner",
+      "phone": "615-882-4410",
+      "email": "ryan@ironcladroofing.com"
+    },
+    {
+      "name": "Amy Torres",
+      "role": "Operations Manager",
+      "phone": "615-903-2217",
+      "email": "amy@ironcladroofing.com"
+    },
+    {
+      "name": "Derek Mitchell",
+      "role": "Sales Manager",
+      "phone": "615-447-8813",
+      "email": "derek@ironcladroofing.com"
+    },
+    {
+      "name": "Shawna Wright",
+      "role": "Office Coordinator",
+      "phone": "615-555-0763",
+      "email": "shawna@ironcladroofing.com"
+    },
+    {
+      "name": "Kevin Briggs",
+      "role": "Production Manager",
+      "phone": "615-631-4478",
+      "email": "kevin@ironcladroofing.com"
+    }
+  ],
+  "storm_surge_protocol": {
+    "activation": "manual",
+    "routing": {
+      "primary_contact": "Derek",
+      "secondary_contact": "Ryan",
+      "notification_method": "email and text",
+      "callback_target": "2 hours"
+    },
+    "greeting": "Good morning, Ironclad Roofing, this is Clara. If you're calling about recent storm damage, we offer free inspections when you're ready. How can I help you today?",
+    "questions": [
+      "Are you calling because of recent storm damage?",
+      "Description of damage",
+      "Interior leaks?",
+      "Insurance claim filed?",
+      "Availability for inspection"
+    ],
+    "free_inspection_mention": true
+  },
+  "vip_clients": [
+    {
+      "name": "Cumberland Property Management",
+      "contact": "Sarah Duncan",
+      "type": "commercial"
+    },
+    {
+      "name": "Music City Church Group",
+      "contact": "Pastor Mike Stanton",
+      "type": "commercial"
+    },
+    {
+      "name": "Nashville Hot Chicken Holdings",
+      "contact": "Jamie Lewis",
+      "type": "commercial"
+    },
+    {
+      "name": "Benchmark Realty",
+      "type": "residential referral"
+    },
+    {
+      "name": "Parks Realty",
+      "type": "residential referral"
+    },
+    {
+      "name": "Village Real Estate",
+      "type": "residential referral"
+    }
+  ],
+  "service_area": {
+    "primary": "Middle Tennessee",
+    "counties": [
+      "Davidson",
+      "Williamson",
+      "Rutherford",
+      "Wilson",
+      "Sumner",
+      "Robertson",
+      "Cheatham"
+    ],
+    "radius": "40 miles"
+  },
+  "licensing_and_credentials": {
+    "tennessee_license": "HIC-38724",
+    "certifications": [
+      "GAF Master Elite",
+      "CertainTeed SELECT ShingleMaster"
+    ],
+    "insurance": {
+      "general_liability": "$2M",
+      "workers_compensation": "$1M",
+      "commercial_auto": "$1M"
+    }
+  },
+  "warranties": {
+    "workmanship": "10 years",
+    "gaf_system_plus": "25 years",
+    "golden_pledge": "50 years non-prorated"
+  },
+  "financing_options": {
+    "provider": "Hearth",
+    "mention": "For non-insurance re-roofs"
+  },
+  "phrases_to_avoid": [
+    "I don't know",
+    "Pricing or estimates",
+    "Definitive repair/replace recommendations",
+    "Insurance filing advice",
+    "Negative comments about competitors"
+  ],
+  "greeting": {
+    "normal": "Good morning, Ironclad Roofing, this is Clara. How can I help you today?",
+    "storm_mode": "Good morning, Ironclad Roofing, this is Clara. If you're calling about recent storm damage, we offer free inspections when you're ready. How can I help you today?"
+  },
+  "closing": {
+    "normal": "Thank you for calling Ironclad Roofing. We'll be in touch.",
+    "with_next_steps": "One of our team members will reach out to you within [timeframe]."
+  }
+}

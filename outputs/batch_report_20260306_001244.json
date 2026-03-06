@@ -1,0 +1,22 @@
+{
+  "run_timestamp": "2026-03-06T00:12:44.158094",
+  "total_runs": 2,
+  "succeeded": 0,
+  "failed": 2,
+  "total_duration_seconds": 432.48,
+  "avg_duration_per_run_seconds": 216.24,
+  "results": [
+    {
+      "account_id": "benselectric",
+      "pipeline": "A",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed (Groq + Gemini)"
+    },
+    {
+      "account_id": "benselectric",
+      "pipeline": "B",
+      "status": "FAILED",
+      "output_path": "Error: All LLM attempts failed (Groq + Gemini)"
+    }
+  ]
+}

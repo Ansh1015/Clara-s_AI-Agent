@@ -1,0 +1,61 @@
+{
+  "account_id": "benselectric",
+  "company_name": "Ben's Electric Solutions",
+  "business_hours": {
+    "days": "Monday to Friday",
+    "start": "8:00 AM",
+    "end": null,
+    "timezone": null
+  },
+  "office_address": null,
+  "services_supported": [
+    "Outlet replacements",
+    "Fixture replacements",
+    "Renovations",
+    "Troubleshooting",
+    "EV chargers",
+    "Hot tub hookups",
+    "Panel changes",
+    "Service maintenance",
+    "Generator connections",
+    "Aluminum wiring mitigation",
+    "Residential projects",
+    "Commercial projects"
+  ],
+  "emergency_definition": [
+    "Emergency calls for regular property managers and general contractors"
+  ],
+  "emergency_routing_rules": {
+    "primary_contact": "Ben",
+    "primary_phone": null,
+    "routing_order": [
+      "Ben"
+    ],
+    "fallback_action": null
+  },
+  "non_emergency_routing_rules": {
+    "action": "Collect message and follow up during business hours",
+    "details": null
+  },
+  "call_transfer_rules": {
+    "timeout_seconds": null,
+    "retries": null,
+    "message_on_fail": null
+  },
+  "integration_constraints": [
+    "Clara does not have its own calendar and scheduler"
+  ],
+  "after_hours_flow_summary": "Calls are taken by Clara and routed appropriately based on urgency and business rules.",
+  "office_hours_flow_summary": "Calls are handled by Clara, with specific calls routed directly to Ben or other team members as configured.",
+  "questions_or_unknowns": [
+    "The exact end time for business hours was not confirmed \u2014 please confirm.",
+    "The timezone for business hours was not confirmed \u2014 please confirm.",
+    "The exact office address was not provided \u2014 please confirm.",
+    "The primary phone number for emergency routing was not explicitly stated \u2014 please confirm.",
+    "The fallback action for emergency routing was not explicitly stated \u2014 please confirm."
+  ],
+  "notes": "Ben is enthusiastic about implementing Clara Answers to handle calls and improve business operations. He has a small team and is looking to grow his business. He has had mixed experiences with virtual assistants in the past but is optimistic about Clara's capabilities.",
+  "source": "demo_call",
+  "version": "v1",
+  "created_at": "2023-10-06T15:00:00Z"
+}
