@@ -2,13 +2,23 @@
 
 ## 1. Project Overview
 
-Clara AI Pipeline is a fully automated backend system that converts raw sales demo and onboarding call transcripts into production-ready AI voice agent configurations. It uses a multi-provider LLM strategy (Mistral → Gemini → Groq) to extract business rules, generate voice agent prompts, and track version changes — all at zero cost.
+Clara AI Pipeline is a complete full-stack platform featuring a beautifully designed **React Single Page Application (SPA)** for managing AI Voice Agents, alongside a fully automated backend system that converts raw sales demo and onboarding call transcripts into production-ready configurations. It uses a multi-provider LLM strategy (Mistral → Gemini → Groq) to extract business rules, generate voice agent prompts, and track version changes — all at zero cost.
 
 The pipeline processes transcripts in two stages: **Pipeline A** extracts initial business data from demo calls to create v1 configurations, and **Pipeline B** refines these with onboarding call data to produce v2 configurations with a detailed changelog of what changed and why.
 
 ---
 
-## 2. Architecture
+## 2. Frontend Interface
+
+The newly integrated Frontend is a highly responsive, cinematic React interface utilizing deep-navy visuals and glassmorphism UI patterns.
+
+*   **Public Portal**: Immersive Landing Page, dynamic Pricing toggles, Markdown-ready Docs & Blog areas.
+*   **Authentication**: Built-in flow integrated precisely with Supabase Google OAuth (`/login`, Protected Routes).
+*   **Dashboard**: Secure user portal (`/dashboard`) managing account statistics, pipeline quick runs, and recent activity metrics.
+
+---
+
+## 3. Architecture
 
 ```
 Demo Transcript (.txt)
@@ -44,7 +54,7 @@ Airtable record updated
 
 ---
 
-## 3. Tech Stack
+## 4. Tech Stack
 
 | Component | Tool | Purpose | Cost |
 |---|---|---|---|
@@ -68,7 +78,7 @@ Airtable record updated
 
 ---
 
-## 4. LLM Zero-Cost Strategy
+## 5. LLM Zero-Cost Strategy
 
 The pipeline uses a 6-position fallback chain to guarantee zero-cost operation:
 
@@ -92,7 +102,7 @@ All accounts processed via Gemini 2.5-flash-lite (Position 3). When flash-lite h
 
 ---
 
-## 5. Prerequisites
+## 6. Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - Python 3.10+
@@ -107,7 +117,7 @@ All accounts processed via Gemini 2.5-flash-lite (Position 3). When flash-lite h
 
 ---
 
-## 6. Setup Guide
+## 7. Setup Guide
 
 ### Step 1: Clone the repo
 ```bash
@@ -153,7 +163,7 @@ Access the web UI at `http://localhost:5173`. Make sure you have added your Supa
 
 ---
 
-## 7. Running the Pipeline
+## 8. Running the Pipeline
 
 ### Add transcripts
 ```
@@ -188,7 +198,7 @@ python -m scripts.batch_run --pipeline A --force
 
 ---
 
-## 8. Output Structure
+## 9. Output Structure
 
 ```
 outputs/accounts/{account_id}/
@@ -212,7 +222,7 @@ outputs/accounts/{account_id}/
 
 ---
 
-## 9. Retell Manual Import
+## 10. Retell Manual Import
 
 1. Open [retell.ai](https://retell.ai) dashboard
 2. Go to **Agents → Create New Agent**
@@ -225,7 +235,7 @@ outputs/accounts/{account_id}/
 
 ---
 
-## 10. Supabase Tables
+## 11. Supabase Tables
 
 | Table | Purpose | Key Fields |
 |---|---|---|
@@ -237,7 +247,7 @@ outputs/accounts/{account_id}/
 
 ---
 
-## 11. Known Limitations
+## 12. Known Limitations
 
 1. **Mistral API key** — Must be valid for Position 1-2 to work; otherwise falls back to Gemini
 2. **Gemini rate limits** — Daily RPD limits can be hit during heavy testing (auto-fallback handles this)
@@ -248,7 +258,7 @@ outputs/accounts/{account_id}/
 
 ---
 
-## 12. Future Improvements
+## 13. Future Improvements
 
 With production access, the pipeline would benefit from:
 
