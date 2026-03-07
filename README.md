@@ -24,7 +24,7 @@ Agent Spec JSON v1
 Saved to Supabase + Local files
         ↓
 Airtable task record created
-        ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+        ↓ 
 Onboarding Transcript (.txt)
         ↓
 [Pipeline B — scripts/batch_run.py]
@@ -49,18 +49,21 @@ Airtable record updated
 | Component | Tool | Purpose | Cost |
 |---|---|---|---|
 | Orchestration | n8n (Docker) | Workflow automation | Free |
+| Frontend | React + Vite + Tailwind | User Interface | Free |
+| Animations | Framer Motion | UI Transitions | Free |
+| State/Routing | React Router DOM | SPA Navigation | Free |
 | Primary LLM | Mistral medium-2505 | Extraction + generation | Free |
 | Fallback LLM 1 | Mistral small-2506 | Backup primary | Free |
 | Fallback LLM 2 | Gemini 2.5 Flash-Lite | Alt provider | Free |
 | Fallback LLM 3 | Gemini 2.5 Flash | Alt provider | Free |
 | Fallback LLM 4 | Groq llama-3.3-70b | Last resort (chunked) | Free |
 | Fallback LLM 5 | Groq llama-3.1-8b | Last resort (chunked) | Free |
-| Database | Supabase (free tier) | All data storage | Free |
+| Database | Supabase (free tier) | All data storage + Auth | Free |
 | Local storage | JSON files | Supabase fallback | Free |
 | Task tracker | Airtable (free tier) | Status tracking | Free |
 | Voice platform | Retell AI | Agent deployment | Free |
 | Version control | GitHub | Code + outputs | Free |
-| Runtime | Python 3.10+ | Scripts | Free |
+| Runtime | Python 3.10+ & Node.js 18+ | Scripts & Frontend | Free |
 | **Total cost** | | | **$0.00** |
 
 ---
@@ -139,6 +142,14 @@ Access at `http://localhost:5678` — Login: `admin` / `claraadmin`
 
 ### Step 7: Import n8n workflow
 Import `workflows/n8n_pipeline_export.json` into n8n.
+
+### Step 8: Start Frontend Application
+```bash
+cd frontend
+npm install
+npm run dev
+```
+Access the web UI at `http://localhost:5173`. Make sure you have added your Supabase credentials to `frontend/.env`.
 
 ---
 
