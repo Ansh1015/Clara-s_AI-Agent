@@ -1,10 +1,10 @@
 export default function Docs() {
     return (
         <div className="min-h-screen bg-[#0A0F1E] text-white pt-8 pb-24 px-6 relative">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 relative z-10">
+            <div className="w-full flex flex-col md:flex-row gap-8 lg:gap-12 relative z-10">
                 {/* Sidebar */}
                 <aside className="md:w-64 shrink-0">
-                    <div className="sticky top-24">
+                    <div className="sticky top-8">
                         <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4 px-3">Documentation</h3>
                         <nav className="space-y-1">
                             <a href="#" className="block px-3 py-2 text-blue-400 bg-blue-500/10 rounded-lg font-medium">Getting Started</a>

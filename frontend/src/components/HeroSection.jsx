@@ -121,7 +121,7 @@ export default function HeroSection() {
                             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                             className="px-7 py-3.5 bg-blue-500 text-white font-medium rounded-lg text-center hover:bg-blue-600 transition-colors"
                         >
-                            Get Started Free →
+                            Start Free →
                         </motion.a>
 
                         <a href="#" className="flex items-center justify-center gap-2 px-7 py-3.5 bg-transparent border border-white/20 text-white font-medium rounded-lg hover:bg-white/5 transition-colors">

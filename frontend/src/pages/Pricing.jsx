@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Check } from 'lucide-react'
 
 export default function Pricing() {
     const prefersReducedMotion = useReducedMotion()
+    const [hoveredCard, setHoveredCard] = useState(null)
+    const [hoveredBtn, setHoveredBtn] = useState(null)
 
     const faqs = [
         {
@@ -47,7 +50,19 @@ export default function Pricing() {
 
                 <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-24">
                     {/* Free Card */}
-                    <div className="bg-white/5 backdrop-blur-[20px] border border-white/10 rounded-2xl p-8 flex flex-col h-full">
+                    <div
+                        onMouseEnter={() => setHoveredCard('free')}
+                        onMouseLeave={() => setHoveredCard(null)}
+                        className="bg-white/5 backdrop-blur-[20px] rounded-2xl p-8 flex flex-col h-full border"
+                        style={{
+                            background: hoveredCard === 'free' ? 'rgba(59,130,246,0.05)' : 'rgba(255,255,255,0.03)',
+                            transform: hoveredCard === 'free' ? 'translateY(-8px)' : 'translateY(0px)',
+                            border: hoveredCard === 'free' ? '1px solid rgba(59,130,246,0.6)' : '1px solid rgba(255,255,255,0.08)',
+                            boxShadow: hoveredCard === 'free' ? '0 20px 40px rgba(59,130,246,0.2)' : 'none',
+                            transition: 'all 0.3s ease',
+                            cursor: 'pointer'
+                        }}
+                    >
                         <div className="mb-8">
                             <h2 className="text-xl font-bold mb-2">FREE</h2>
                             <div className="text-4xl font-bold mb-2">$0 <span className="text-lg text-slate-400 font-normal">/ month</span></div>
@@ -63,13 +78,40 @@ export default function Pricing() {
                             ))}
                         </ul>
 
-                        <a href="/login" className="w-full block text-center py-3.5 px-6 border border-white text-white font-medium rounded-lg hover:bg-white/5 transition-colors">
-                            Get Started Free
-                        </a>
+                        <button
+                            onMouseEnter={() => setHoveredBtn('free')}
+                            onMouseLeave={() => setHoveredBtn(null)}
+                            className="w-full block text-center rounded-lg font-medium"
+                            style={{
+                                background: hoveredBtn === 'free' ? '#3B82F6' : 'transparent',
+                                border: hoveredBtn === 'free' ? '1px solid #3B82F6' : '1px solid rgba(255,255,255,0.2)',
+                                boxShadow: hoveredBtn === 'free' ? '0 0 20px rgba(59,130,246,0.4)' : 'none',
+                                color: 'white',
+                                padding: '14px 24px',
+                                transform: hoveredBtn === 'free' ? 'translateY(-1px)' : 'translateY(0px)',
+                                transition: 'all 0.3s ease',
+                                cursor: 'pointer'
+                            }}
+                            onClick={() => window.location.href = '/login'}
+                        >
+                            Start Free
+                        </button>
                     </div>
 
                     {/* Pro Card */}
-                    <div className="bg-white/5 backdrop-blur-[20px] border border-blue-500/50 rounded-2xl p-8 flex flex-col h-full relative" style={{ boxShadow: '0 0 40px rgba(59,130,246,0.15)' }}>
+                    <div
+                        onMouseEnter={() => setHoveredCard('pro')}
+                        onMouseLeave={() => setHoveredCard(null)}
+                        className="bg-white/5 backdrop-blur-[20px] rounded-2xl p-8 flex flex-col h-full relative border"
+                        style={{
+                            background: hoveredCard === 'pro' ? 'rgba(59,130,246,0.05)' : 'rgba(255,255,255,0.03)',
+                            transform: hoveredCard === 'pro' ? 'translateY(-8px)' : 'translateY(0px)',
+                            border: hoveredCard === 'pro' ? '1px solid rgba(59,130,246,0.6)' : '1px solid rgba(255,255,255,0.08)',
+                            boxShadow: hoveredCard === 'pro' ? '0 20px 40px rgba(59,130,246,0.2)' : 'none',
+                            transition: 'all 0.3s ease',
+                            cursor: 'pointer'
+                        }}
+                    >
                         <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-3">
                             <span className="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider whitespace-nowrap shadow-lg shadow-blue-500/30">Most Popular</span>
                         </div>
@@ -89,9 +131,24 @@ export default function Pricing() {
                             ))}
                         </ul>
 
-                        <a href="/login" className="w-full block text-center py-3.5 px-6 bg-blue-500 text-white font-medium rounded-lg hover:bg-blue-600 hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition-all">
+                        <button
+                            onMouseEnter={() => setHoveredBtn('pro')}
+                            onMouseLeave={() => setHoveredBtn(null)}
+                            className="w-full block text-center rounded-lg font-medium"
+                            style={{
+                                background: hoveredBtn === 'pro' ? '#3B82F6' : 'transparent',
+                                border: hoveredBtn === 'pro' ? '1px solid #3B82F6' : '1px solid rgba(255,255,255,0.2)',
+                                boxShadow: hoveredBtn === 'pro' ? '0 0 20px rgba(59,130,246,0.4)' : 'none',
+                                color: 'white',
+                                padding: '14px 24px',
+                                transform: hoveredBtn === 'pro' ? 'translateY(-1px)' : 'translateY(0px)',
+                                transition: 'all 0.3s ease',
+                                cursor: 'pointer'
+                            }}
+                            onClick={() => window.location.href = '/login'}
+                        >
                             Upgrade to Pro →
-                        </a>
+                        </button>
                     </div>
                 </div>
 
@@ -100,8 +157,8 @@ export default function Pricing() {
                     <h2 className="text-3xl font-bold mb-8 text-center">Frequently Asked Questions</h2>
                     <div className="space-y-6">
                         {faqs.map((faq, i) => (
-                            <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-6">
-                                <h3 className="text-lg font-bold mb-2 text-white">{faq.q}</h3>
+                            <div key={i} className="bg-white/5 backdrop-blur-[20px] border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-colors cursor-pointer group">
+                                <h3 className="text-lg font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">{faq.q}</h3>
                                 <p className="text-slate-400 leading-relaxed">{faq.a}</p>
                             </div>
                         ))}
